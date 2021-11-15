@@ -1,7 +1,22 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 .nav {
-    &-list {
-        list-style: none;
-        display: flex;
-        justify-content: space-between;
+  &-list {
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: wrap; // TODO: is this how I want this to look for mobile?
+    &__item {
+      padding: $m-default-padding / 2 $m-default-padding;
+      border: 1px solid $light-green; // TODO: add mixin for this
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      text-transform: uppercase;
+      &--active {
+        background-color: $light-green;
+      }
     }
-text-decoration: none;}
+  }
+  border-bottom: 1px solid $light-green; // TODO: add mixin for this
+}
