@@ -1,11 +1,11 @@
-import "./App.css";
+import "./App.scss";
 import Nav from "./components/Nav";
 
 function App() {
   return (
     <div className="App">
-      <h1>Habit Tracker</h1>
       <Nav />
+      <h1>Habit Tracker</h1>
     </div>
   );
 }

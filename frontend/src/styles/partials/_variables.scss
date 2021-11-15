@@ -1,0 +1,31 @@
+@use "sass:math";
+
+/* **********
+ *  formulas
+ * **********/
+@function toRem($value) {
+  $remValue: math.div($value, 16) + rem;
+  @return $remValue;
+}
+
+/* *******
+ * layout
+ * *******/
+$container-max: 720px;
+$m-default-padding: 2rem;
+
+/* ***********
+ * typography
+ * ***********/
+
+$m-body-size: toRem(12px);
+$dt-body-size: toRem(14px);
+$body-weight: 400;
+$body-height: toRem(20px);
+
+$subheader-size: 600;
+$subheader-weight: 600;
+
+$header-size: toRem(22px);
+$header-weight: 600;
+$body-height: toRem(28px);
