@@ -1,10 +1,11 @@
+import React from "react";
 import "./App.scss";
-import Nav from "./components/Nav";
+import Modal from "./components/Modal";
 
 function App() {
   return (
     <div className="App">
-      <Nav />
+      <Modal />
       <h1>Habit Tracker</h1>
     </div>
   );

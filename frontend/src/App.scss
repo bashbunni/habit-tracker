@@ -1,8 +1,17 @@
 @use "./styles/partials/variables" as *;
 @use "./styles/partials/mixins" as *;
+@use "./styles/partials/typography" as *;
 
-.container {
-    margin: 0 auto;
-    max-width: $container-max;
-    margin: 0 $m-default-padding;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: $font-family;
+  background-color: $background;
 }

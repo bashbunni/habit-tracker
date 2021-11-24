@@ -1,0 +1,21 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.modal {
+  &__link {
+    @include subtitle(white);
+    &--active {
+      @include subtitle($light-green);
+    }
+    &--pomodoro {
+      @include subtitle($blue);
+    }
+    &--add {
+      background: url("../../assets/icons/add.svg");
+      background-repeat: no-repeat;
+      background-size: 25px;
+      background-position: 0 12.5px;
+      padding-left: 35px;
+    }
+  }
+}
