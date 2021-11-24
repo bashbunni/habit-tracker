@@ -7,6 +7,8 @@ body {
   background-color: $background;
   box-sizing: border-box;
   display: inline-block;
+  width: 100vw;
+  height: 100vh;
 }
 
 a {
@@ -18,4 +20,23 @@ ul {
   list-style: none;
 }
 
+.app {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
+.container {
+  width: 100%;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  @include tablet {
+    max-width: $container-max;
+  }
+}
+
+.hamburger {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}

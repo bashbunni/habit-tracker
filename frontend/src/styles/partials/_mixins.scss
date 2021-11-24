@@ -18,8 +18,9 @@
   border: 1px solid $color;
 }
 
-@mixin title {
+@mixin maintitle {
   text-transform: uppercase;
+  color: white;
   font-size: 3rem;
 }
 
