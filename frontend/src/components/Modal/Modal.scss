@@ -3,14 +3,17 @@
 
 .modal {
   margin: 0;
-  width: 27%;
+  width: 100%;
   height: 100%;
   position: absolute;
   display: flex;
   flex-direction: column;
   top: 0;
-  min-width: 320px;
+  min-width: 350px;
   background-color: $black;
+  @include tablet {
+    width: 350px;
+  }
   &__close {
     align-self: flex-end;
     width: 25px;

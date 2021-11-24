@@ -1,3 +1,19 @@
+@use "variables" as *;
+
+/* **************
+ * media queries
+ * **************/
+
+@mixin tablet {
+  @media (min-width: $tablet-size) {
+    @content;
+  }
+}
+
+/* ***********
+ * formatting
+ * ***********/
+
 @mixin divider($color) {
   border: 1px solid $color;
 }
