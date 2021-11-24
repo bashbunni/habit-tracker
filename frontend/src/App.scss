@@ -2,6 +2,13 @@
 @use "./styles/partials/mixins" as *;
 @use "./styles/partials/typography" as *;
 
+body {
+  font-family: $font-family;
+  background-color: $background;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -11,7 +18,4 @@ ul {
   list-style: none;
 }
 
-body {
-  font-family: $font-family;
-  background-color: $background;
-}
+

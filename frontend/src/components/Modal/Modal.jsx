@@ -1,9 +1,11 @@
 import React from "react";
 import "./Modal.scss";
+import close from "../../assets/icons/remove.svg";
 
 const Modal = () => {
   return (
     <div className="modal">
+      <img className="modal__close" src={close} alt="close modal" />
       <ul className="modal__list">
         <li className="modal__item">
           <a href="#" className="modal__link--active">

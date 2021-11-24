@@ -2,6 +2,27 @@
 @use "../../styles/partials/mixins" as *;
 
 .modal {
+  margin: 0;
+  width: 27%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  min-width: 320px;
+  background-color: $black;
+  &__close {
+    align-self: flex-end;
+    width: 25px;
+    height: 25px;
+    margin: 1.5rem 1.5rem 150px 0;
+  }
+  &__list {
+    margin: 0;
+  }
+  &__item {
+    margin-bottom: 1rem;
+  }
   &__link {
     @include subtitle(white);
     &--active {
