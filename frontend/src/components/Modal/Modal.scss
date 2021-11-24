@@ -9,10 +9,10 @@
   display: flex;
   flex-direction: column;
   top: 0;
-  min-width: 350px;
+  min-width: $modal-width;
   background-color: $black;
   @include tablet {
-    width: 350px;
+    width: $modal-width;
   }
   &__close {
     align-self: flex-end;
