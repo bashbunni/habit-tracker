@@ -4,7 +4,7 @@ import ReactTooltip from "react-tooltip";
 import edit from "../../assets/icons/btn--edit.png";
 import add from "../../assets/icons/btn--add.png";
 import mockPomodoro from "../../assets/images/mock-pomodoro.png";
-import "react-calendar-heatmap/dist/styles.css";
+// import "react-calendar-heatmap/dist/styles.css";
 import "./Habit.scss";
 
 const today = new Date();
@@ -17,10 +17,10 @@ const Habit = () => {
       "Logic will get you from A to Z; imagination will get you everywhere.",
     author: "Albert Einstein",
   };
-  const randomValues = getRange(200).map((index) => {
+  const randomValues = getRange(364).map((index) => {
     return {
       date: shiftDate(today, -index),
-      count: getRandomInt(1, 3),
+      count: getRandomInt(0, 3),
     };
   });
   return (
@@ -45,14 +45,14 @@ const Habit = () => {
         </div>
       </div>
       <CalendarHeatmap
-        startDate={shiftDate(today, -150)}
+        startDate={shiftDate(today, -364)}
         endDate={today}
         values={randomValues}
         classForValue={(value) => {
           if (!value) {
             return "color-empty";
           }
-          return `color-scale-${value.count}`;
+          return `color-github-${value.count}`;
         }}
         tooltipDataAttrs={(value) => {
           return {

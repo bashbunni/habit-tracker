@@ -70,7 +70,6 @@
   @include divider($blue);
   border-radius: $default-border;
   height: 100%;
-  margin-top: 3rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -90,7 +89,7 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    margin: 3rem 0;
+    margin: 2rem 0;
     @include tablet {
       flex-direction: row;
       align-items: flex-end;
@@ -127,14 +126,39 @@
   }
 }
 
+/* ********
+ * heatmap
+ * ********/
+
 .react-calendar-heatmap {
   margin-top: 3rem;
-  height: 100%;
-  & .color-empty {
+  width: 100%;
+  & text {
+    font-size: 0.5rem;
     fill: white;
   }
-  & .color-filled {
-    fill: $blue;
+  & .color-empty {
+    fill: #eeeeee;
   }
 }
 
+rect {
+  rx: 1px;
+}
+
+// counts
+.react-calendar-heatmap .color-github-0 {
+  fill: #eeeeee;
+}
+.react-calendar-heatmap .color-github-1 {
+  fill: #d6e685;
+}
+.react-calendar-heatmap .color-github-2 {
+  fill: #8cc665;
+}
+.react-calendar-heatmap .color-github-3 {
+  fill: #44a340;
+}
+.react-calendar-heatmap .color-github-4 {
+  fill: #1e6823;
+}
