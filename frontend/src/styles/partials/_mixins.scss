@@ -42,3 +42,11 @@
     color: white;
   }
 }
+
+@mixin form-field {
+  min-height: $form-field-height;
+  border: $grey 1px solid;
+  background-color: white;
+  border-radius: $default-border;
+  padding-left: 1rem;
+}

@@ -4,7 +4,6 @@ import ReactTooltip from "react-tooltip";
 import edit from "../../assets/icons/btn--edit.png";
 import add from "../../assets/icons/btn--add.png";
 import mockPomodoro from "../../assets/images/mock-pomodoro.png";
-// import "react-calendar-heatmap/dist/styles.css";
 import "./Habit.scss";
 
 const today = new Date();

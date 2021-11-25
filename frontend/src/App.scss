@@ -50,3 +50,15 @@ p {
 .highlight {
   font-weight: 800;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  & label {
+    margin-bottom: 1rem;
+  }
+  &-field {
+    @include form-field;
+    width: 50%;
+  }
+}
