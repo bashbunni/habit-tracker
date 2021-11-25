@@ -1,13 +1,28 @@
-import "./App.css";
-import Nav from "./components/Nav";
+import React, { useState } from "react";
+import Modal from "./components/Modal";
+import Habit from "./components/Habit";
+import hamburger from "./assets/icons/hamburger.svg";
+import "./App.scss";
 
-function App() {
+const App = () => {
+  const [navModal, setNavModal] = useState(false);
+  const openNav = () => setNavModal(true);
+  const closeNav = () => setNavModal(false);
+
   return (
-    <div className="App">
-      <h1>Habit Tracker</h1>
-      <Nav />
+    <div className="app">
+      <div className="container">
+        <img
+          className="hamburger"
+          src={hamburger}
+          alt="open menu"
+          onClick={openNav}
+        />
+        {navModal ? <Modal closeModal={closeNav} /> : null}
+        <Habit />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

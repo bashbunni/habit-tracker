@@ -1,0 +1,164 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.habit {
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  &__title {
+    @include maintitle;
+    margin: auto;
+    margin-left: 0;
+    @include tablet {
+      margin: 0 auto;
+    }
+  }
+  &__icon {
+    margin-left: 1.5rem;
+    max-width: 30px;
+    max-height: 30px;
+  }
+  &__about {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 3rem;
+    @include divider($light-green);
+    border-radius: $default-border;
+    padding: 1rem;
+  }
+}
+
+.why {
+  display: flex;
+  flex-direction: column;
+  &__title {
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+.goal {
+  display: flex;
+  margin-right: 3rem;
+  &__title {
+    text-transform: uppercase;
+    margin: 0;
+  }
+  &__choice {
+    margin: 0;
+    background: url("../../assets/icons/checkbox.svg");
+    background-repeat: no-repeat;
+    background-size: 15px;
+    padding-left: 30px;
+    margin-left: 5px;
+    background-position: 7px;
+    &--active {
+      background: url("../../assets/icons/checkbox--active.svg");
+      background-repeat: no-repeat;
+      background-size: 15px;
+      background-position: 7px;
+    }
+  }
+}
+
+.pomodoro {
+  @include divider($blue);
+  border-radius: $default-border;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title {
+    @include subtitle(white);
+    font-size: 1.5rem;
+  }
+  &__image {
+    width: 90%;
+  }
+  &__quote {
+    max-width: 100%;
+    margin: 0;
+  }
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 2rem 0;
+    @include tablet {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column-reverse;
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    margin-top: 1.5rem;
+    @include tablet {
+      margin-left: 2rem;
+      min-width: 120px;
+      min-height: 50px;
+      max-width: 120px;
+      max-height: 50px;
+    }
+    &--reset {
+      @include btn($grey);
+    }
+    &--start {
+      @include btn($blue);
+    }
+  }
+}
+
+/* ********
+ * heatmap
+ * ********/
+
+.react-calendar-heatmap {
+  margin-top: 3rem;
+  width: 100%;
+  & text {
+    font-size: 0.5rem;
+    fill: white;
+  }
+  & .color-empty {
+    fill: #eeeeee;
+  }
+}
+
+rect {
+  rx: 1px;
+}
+
+// counts
+.react-calendar-heatmap .color-github-0 {
+  fill: #eeeeee;
+}
+.react-calendar-heatmap .color-github-1 {
+  fill: #d6e685;
+}
+.react-calendar-heatmap .color-github-2 {
+  fill: #8cc665;
+}
+.react-calendar-heatmap .color-github-3 {
+  fill: #44a340;
+}
+.react-calendar-heatmap .color-github-4 {
+  fill: #1e6823;
+}
