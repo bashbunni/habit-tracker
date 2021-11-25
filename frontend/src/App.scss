@@ -2,13 +2,16 @@
 @use "./styles/partials/mixins" as *;
 @use "./styles/partials/typography" as *;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: $font-family;
   background-color: $background;
-  box-sizing: border-box;
-  display: inline-block;
   width: 100vw;
   height: 100vh;
+  color: white;
 }
 
 a {
@@ -28,8 +31,7 @@ ul {
 
 .container {
   width: 100%;
-  margin-left: 2rem;
-  margin-top: 2rem;
+  margin: 2rem;
   @include tablet {
     max-width: $container-max;
   }
@@ -39,4 +41,8 @@ ul {
   width: 30px;
   height: 30px;
   cursor: pointer;
+}
+
+.highlight {
+  font-weight: 800;
 }

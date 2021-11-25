@@ -20,7 +20,6 @@ const App = () => {
         />
         {navModal ? <Modal closeModal={closeNav} /> : null}
         <Habit />
-        <h1>Habit Tracker</h1>
       </div>
     </div>
   );

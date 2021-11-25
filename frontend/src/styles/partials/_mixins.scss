@@ -15,7 +15,7 @@
  * ***********/
 
 @mixin divider($color) {
-  border: 1px solid $color;
+  border: $color 1px solid;
 }
 
 @mixin maintitle {
@@ -28,4 +28,17 @@
   text-transform: uppercase;
   color: $color;
   font-size: 2.25rem;
+}
+
+@mixin btn($color) {
+  border: $color 1px solid;
+  border-radius: $default-border;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  cursor: pointer;
+  &:hover {
+    background-color: $color;
+    color: white;
+  }
 }
