@@ -1,22 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import close from "../../assets/icons/remove.svg";
 import "./EditHabit.scss";
 
 const EditHabit = ({ habit, setHabit, setEditOpen }) => {
-  const handleNameChange = (e) => {
-    setHabit({ ...habit, name: e.target.value });
-  };
-  const handleWhyChange = (e) => {
-    setHabit({ ...habit, why: e.target.value });
-  };
-  const handleUnitChange = (e) => {
-    setHabit({ ...habit, unit: e.target.value });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setEditOpen(false);
-  };
-
+  const [tempHabit, setTempHabit] = useState(habit);
   return (
     <div className="edit-habit">
       <img
@@ -27,7 +14,14 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
           setEditOpen(false);
         }}
       />
-      <form className="form" onSubmit={handleSubmit}>
+      <form
+        className="form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          setHabit({ name: tempHabit.name, unit: tempHabit.unit, why: tempHabit.why });
+          setEditOpen(false);
+        }}
+      >
         <h1 className="form__title">Edit Habit</h1>
         <label className="form__label" htmlFor="name">
           habit name
@@ -38,8 +32,8 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
           id="name"
           type="text"
           placeholder="yoga"
-          value={habit.name}
-          onChange={handleNameChange}
+          value={tempHabit.name}
+          onChange={(e) => setTempHabit({ ...tempHabit, name: e.target.value })}
         />
         <label className="form__label" htmlFor="unit">
           unit of measure
@@ -50,8 +44,8 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
           id="unit"
           type="text"
           placeholder="hours"
-          value={habit.unit}
-          onChange={handleUnitChange}
+          value={tempHabit.unit}
+          onChange={(e) => setTempHabit({ ...tempHabit, unit: e.target.value })}
         />
         <label className="form__label" htmlFor="why">
           why
@@ -62,8 +56,8 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
           id="why"
           type="text"
           placeholder="I want to do yoga because..."
-          value={habit.why}
-          onChange={handleWhyChange}
+          value={tempHabit.why}
+          onChange={(e) => setTempHabit({ ...tempHabit, why: e.target.value })}
         />
         <div className="form__btn-container">
           <button className="form__btn" type="submit">
@@ -71,7 +65,8 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
           </button>
           <button
             className="form__btn--reset"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               setEditOpen(false);
             }}
           >
