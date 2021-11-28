@@ -48,8 +48,10 @@ const EditHabit = ({ habit, setEditOpen }) => {
           placeholder="I want to do yoga because..."
           value={habit.why}
         />
-        <button className="form__btn">save</button>
-        <button className="form__btn--reset">cancel</button>
+        <div className="form__btn-container">
+          <button className="form__btn">save</button>
+          <button className="form__btn--reset">cancel</button>
+        </div>
       </form>
     </div>
   );
