@@ -7,23 +7,27 @@ import AddActivity from "../AddActivity";
 import EditHabit from "../EditHabit";
 import Pomodoro from "../Pomodoro";
 import "./Habit.scss";
-import { useHistory } from "react-router-dom";
 
 const today = new Date();
 
 const Habit = ({ habitList }) => {
+  const url = window.location.pathname.split("/").pop();
   // state
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
-  const [habit, setHabit] = useState(habitList[0]);
-  const history = useHistory();
+  const [habit, setHabit] = useState({});
 
   useEffect(() => {
-    history.listen((path) => {
-      console.log(habitList);
-      setHabit(habitList.find((habit) => habit.name === path.pathname));
-    });
-  }, [history]);
+    setHabit(habitList[0]);
+  }, [habitList]);
+
+  useEffect(() => {
+    const myHabit = habitList.find((habit) => habit.name === url);
+    console.log(myHabit);
+    if (myHabit !== undefined) {
+      setHabit(myHabit);
+    }
+  }, [url, habitList]);
 
   // helpers
   const randomValues = getRange(364).map((index) => {

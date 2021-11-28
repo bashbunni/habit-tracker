@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Modal from "./components/Modal";
 import Habit from "./components/Habit";
 import Pomodoro from "./components/Pomodoro";
@@ -56,24 +51,17 @@ const App = () => {
               path="/new"
               exact
               render={(props) => (
-                <AddHabit
-                  setHabitList={setHabitList}
-                  habitList={habitList}
-                />
+                <AddHabit setHabitList={setHabitList} habitList={habitList} />
               )}
             />
             <Route
               path="/:name"
-              render={(props) => (
-                <Habit habitList={habitList} />
-              )}
+              render={(props) => <Habit habitList={habitList} />}
             />
             <Route
               path="/"
               exact
-              render={(props) => (
-                <Habit habitList={habitList} />
-              )}
+              render={(props) => <Habit habitList={habitList} />}
             />
           </Switch>
         </Router>
