@@ -1,3 +1,3 @@
-import AddActivity from './AddActivity.jsx';
+import EditHabit from "./EditHabit.jsx";
 
-export default AddActivity;
+export default EditHabit;

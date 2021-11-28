@@ -53,18 +53,21 @@ p {
 .form {
   display: flex;
   flex-direction: column;
+  &__title {
+    @include subtitle(white);
+  }
   & label {
-    margin-bottom: 1rem;
+    margin: 0.5rem 0;
+    text-transform: uppercase;
   }
   &-field {
     @include form-field;
     width: 50%;
   }
   &__input {
+    @include form-field;
     @include divider($grey);
-    border-radius: $default-border;
     background-color: white;
-    height: $btn-height;
   }
   &__btn {
     @include btn($light-green);
