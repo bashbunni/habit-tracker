@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Modal.scss";
 import close from "../../assets/icons/remove.svg";
 

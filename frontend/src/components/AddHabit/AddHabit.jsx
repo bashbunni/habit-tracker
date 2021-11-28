@@ -1,28 +1,31 @@
 import React, { useState } from "react";
+import { Redirect, useHistory } from "react-router-dom";
 import close from "../../assets/icons/remove.svg";
-import "./EditHabit.scss";
+import "./AddHabit.scss";
 
-const EditHabit = ({ habit, setHabit, setEditOpen }) => {
-  const [tempHabit, setTempHabit] = useState(habit);
+const AddHabit = ({ setHabitList, habitList }) => {
+  const [habit, setHabit] = useState({});
+  const history = useHistory();
   return (
-    <div className="edit-habit">
+    <div className="add-habit">
       <img
-        className="edit-habit__close"
+        className="add-habit__close"
         src={close}
         alt="close"
-        onClick={() => {
-          setEditOpen(false);
-        }}
+        onClick={() => <Redirect to="/" />}
       />
       <form
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
-          setHabit({ name: tempHabit.name, unit: tempHabit.unit, why: tempHabit.why });
-          setEditOpen(false);
+          setHabitList(...habitList, habit);
+          setTimeout(() => {
+            alert("habit added!");
+            history.push(`/${habit.name}`);
+          }, 2000);
         }}
       >
-        <h1 className="form__title">Edit Habit</h1>
+        <h1 className="form__title">Add Habit</h1>
         <label className="form__label" htmlFor="name">
           habit name
         </label>
@@ -32,8 +35,8 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
           id="name"
           type="text"
           placeholder="yoga"
-          value={tempHabit.name}
-          onChange={(e) => setTempHabit({ ...tempHabit, name: e.target.value })}
+          value={habit.name}
+          onChange={(e) => setHabit({ ...habit, name: e.target.value })}
         />
         <label className="form__label" htmlFor="unit">
           unit of measure
@@ -44,8 +47,8 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
           id="unit"
           type="text"
           placeholder="hours"
-          value={tempHabit.unit}
-          onChange={(e) => setTempHabit({ ...tempHabit, unit: e.target.value })}
+          value={habit.unit}
+          onChange={(e) => setHabit({ ...habit, unit: e.target.value })}
         />
         <label className="form__label" htmlFor="why">
           why
@@ -56,8 +59,8 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
           id="why"
           type="text"
           placeholder="I want to do yoga because..."
-          value={tempHabit.why}
-          onChange={(e) => setTempHabit({ ...tempHabit, why: e.target.value })}
+          value={habit.why}
+          onChange={(e) => setHabit({ ...habit, why: e.target.value })}
         />
         <div className="form__btn-container">
           <button className="form__btn" type="submit">
@@ -65,10 +68,7 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
           </button>
           <button
             className="form__btn--reset"
-            onClick={(e) => {
-              e.preventDefault();
-              setEditOpen(false);
-            }}
+            onClick={() => history.push("/")}
           >
             cancel
           </button>
@@ -78,4 +78,4 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
   );
 };
 
-export default EditHabit;
+export default AddHabit;
