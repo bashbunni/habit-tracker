@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import CalendarHeatmap from "react-calendar-heatmap";
 import ReactTooltip from "react-tooltip";
 import edit from "../../assets/icons/btn--edit.png";
 import add from "../../assets/icons/btn--add.png";
 import mockPomodoro from "../../assets/images/mock-pomodoro.png";
-// import "react-calendar-heatmap/dist/styles.css";
+import AddActivity from "../AddActivity";
+import EditHabit from "../EditHabit";
 import "./Habit.scss";
 
 const today = new Date();
 
 const Habit = () => {
+  // state
+  const [addOpen, setAddOpen] = useState(true);
+  const [editOpen, setEditOpen] = useState(false);
+
+  // mock data
   const why = "I want to do yoga every day so that I can be more relaxed";
   const timeRemaining = "10 minutes 58 seconds";
   const quote = {
-    text:
-      "Logic will get you from A to Z; imagination will get you everywhere.",
+    text: "Logic will get you from A to Z; imagination will get you everywhere.",
     author: "Albert Einstein",
   };
+  const unitOfMeasure = "30 minutes";
   const randomValues = getRange(364).map((index) => {
     return {
       date: shiftDate(today, -index),
@@ -25,10 +31,30 @@ const Habit = () => {
   });
   return (
     <div className="habit">
+      {addOpen ? (
+        <AddActivity unitOfMeasure={unitOfMeasure} setAddOpen={setAddOpen} />
+      ) : null}
+      {editOpen ? (
+        <EditHabit setEditOpen={setEditOpen} />
+      ) : null}
       <div className="habit__header">
         <h1 className="habit__title">yoga</h1>
-        <img className="habit__icon" src={edit} alt="edit habit" />
-        <img className="habit__icon" src={add} alt="add activity" />
+        <img
+          className="habit__icon"
+          src={edit}
+          alt="edit habit"
+          onClick={() => {
+            setEditOpen(true);
+          }}
+        />
+        <img
+          className="habit__icon"
+          src={add}
+          alt="add activity"
+          onClick={() => {
+            setAddOpen(true);
+          }}
+        />
       </div>
       <div className="habit__about">
         <div className="why">
