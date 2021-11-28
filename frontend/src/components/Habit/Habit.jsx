@@ -3,9 +3,9 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import ReactTooltip from "react-tooltip";
 import edit from "../../assets/icons/btn--edit.png";
 import add from "../../assets/icons/btn--add.png";
-import mockPomodoro from "../../assets/images/mock-pomodoro.png";
 import AddActivity from "../AddActivity";
 import EditHabit from "../EditHabit";
+import Pomodoro from "../Pomodoro";
 import "./Habit.scss";
 
 const today = new Date();
@@ -18,14 +18,7 @@ const Habit = () => {
     name: "yoga",
     why: "I want to do yoga every day so that I can be more relaxed",
     unit: "hours",
-  })
-
-  // mock data
-  const timeRemaining = "10 minutes 58 seconds";
-  const quote = {
-    text: "Logic will get you from A to Z; imagination will get you everywhere.",
-    author: "Albert Einstein",
-  };
+  });
 
   // helpers
   const randomValues = getRange(364).map((index) => {
@@ -39,7 +32,13 @@ const Habit = () => {
       {addOpen ? (
         <AddActivity unit={habit.unit} setAddOpen={setAddOpen} />
       ) : null}
-      {editOpen ? <EditHabit habit={habit} setHabit={setHabit} setEditOpen={setEditOpen} /> : null}
+      {editOpen ? (
+        <EditHabit
+          habit={habit}
+          setHabit={setHabit}
+          setEditOpen={setEditOpen}
+        />
+      ) : null}
       <div className="habit__header">
         <h1 className="habit__title">{habit.name}</h1>
         <img
@@ -92,27 +91,8 @@ const Habit = () => {
         }}
         showWeekdayLabels={true}
       />
-
       <ReactTooltip />
-      <div className="pomodoro">
-        <h2 className="pomodoro__title">pomodoro</h2>
-        <p className="pomodoro__status">
-          <span className="highlight">Time Left: </span>
-          {timeRemaining}
-        </p>
-        <img className="pomodoro__image" src={mockPomodoro} alt="pomodoro" />
-        <div className="pomodoro__bottom">
-          <blockquote className="pomodoro__quote">
-            <p>
-              "{quote.text}"<br />-{quote.author}
-            </p>
-          </blockquote>
-          <div className="pomodoro__buttons">
-            <div className="pomodoro__btn pomodoro__btn--reset">reset</div>
-            <div className="pomodoro__btn pomodoro__btn--start">start</div>
-          </div>
-        </div>
-      </div>
+      <Pomodoro />
     </div>
   );
 };
