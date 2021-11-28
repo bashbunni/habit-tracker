@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Modal from "./components/Modal";
 import Habit from "./components/Habit";
-import AddActivity from "./components/AddActivity";
 import hamburger from "./assets/icons/hamburger.svg";
 import "./App.scss";
 
@@ -21,7 +20,6 @@ const App = () => {
         />
         {navModal ? <Modal closeModal={closeNav} /> : null}
         <Habit />
-        <AddActivity />
       </div>
     </div>
   );

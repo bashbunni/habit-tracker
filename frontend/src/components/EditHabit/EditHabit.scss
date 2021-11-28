@@ -1,8 +1,8 @@
 @use "../../styles/partials/_mixins.scss" as *;
 @use "../../styles/partials/_variables.scss" as *;
 
-.add-activity {
-  @include modal($blue);
+.edit-habit {
+  @include modal($light-green);
   &__close {
     @include close;
   }

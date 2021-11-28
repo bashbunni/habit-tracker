@@ -12,17 +12,22 @@ const today = new Date();
 
 const Habit = () => {
   // state
-  const [addOpen, setAddOpen] = useState(true);
+  const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
 
   // mock data
-  const why = "I want to do yoga every day so that I can be more relaxed";
+  const habit = {
+    name: "yoga",
+    why: "I want to do yoga every day so that I can be more relaxed",
+    unit: "hours",
+  };
   const timeRemaining = "10 minutes 58 seconds";
   const quote = {
     text: "Logic will get you from A to Z; imagination will get you everywhere.",
     author: "Albert Einstein",
   };
-  const unitOfMeasure = "30 minutes";
+
+  // helpers
   const randomValues = getRange(364).map((index) => {
     return {
       date: shiftDate(today, -index),
@@ -32,13 +37,11 @@ const Habit = () => {
   return (
     <div className="habit">
       {addOpen ? (
-        <AddActivity unitOfMeasure={unitOfMeasure} setAddOpen={setAddOpen} />
+        <AddActivity unit={habit.unit} setAddOpen={setAddOpen} />
       ) : null}
-      {editOpen ? (
-        <EditHabit setEditOpen={setEditOpen} />
-      ) : null}
+      {editOpen ? <EditHabit habit={habit} setEditOpen={setEditOpen} /> : null}
       <div className="habit__header">
-        <h1 className="habit__title">yoga</h1>
+        <h1 className="habit__title">{habit.name}</h1>
         <img
           className="habit__icon"
           src={edit}
@@ -59,7 +62,7 @@ const Habit = () => {
       <div className="habit__about">
         <div className="why">
           <h3 className="why__title">why</h3>
-          <p className="why__text">{why}</p>
+          <p className="why__text">{habit.why}</p>
         </div>
         <div className="goal">
           <h3 className="goal__title">goal:</h3>
