@@ -49,3 +49,24 @@ p {
 .highlight {
   font-weight: 800;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  &__label {
+    margin-bottom: 0.5rem;
+  }
+  &__input {
+    @include divider($grey);
+    border-radius: $default-border;
+    background-color: white;
+    height: $btn-height;
+  }
+  &__btn {
+    @include btn($light-green);
+    &--reset {
+      @include btn($grey);
+    }
+  }
+}
+
