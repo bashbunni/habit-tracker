@@ -1,36 +1,34 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Modal.scss";
 import close from "../../assets/icons/remove.svg";
 
-const Modal = ({closeModal}) => {
+const Modal = ({ closeModal, habitList }) => {
   return (
     <div className="modal">
-      <img className="modal__close" src={close} alt="close modal" onClick={closeModal} />
+      <img
+        className="modal__close"
+        src={close}
+        alt="close modal"
+        onClick={closeModal}
+      />
       <ul className="modal__list">
-        <li className="modal__item">
-          <a href="#" className="modal__link--active">
-            yoga
-          </a>
-        </li>
-        <li className="modal__item">
-          <a href="#" className="modal__link">
-            water
-          </a>
-        </li>
-        <li className="modal__item">
-          <a href="#" className="modal__link">
-            meditation
-          </a>
-        </li>
-        <li className="modal__item">
-          <a href="#" className="modal__link modal__link--pomodoro">
+        {habitList.map((habit) => (
+          <li key={habit.id} className="modal__item">
+            <NavLink to={`/${habit.name}`} className="modal__link">
+              {habit.name}
+            </NavLink>
+          </li>
+        ))}
+        <li key="pomodoro" className="modal__item">
+          <NavLink to="/pomodoro" className="modal__link modal__link--pomodoro">
             pomodoro
-          </a>
+          </NavLink>
         </li>
-        <li className="modal__item">
-          <a href="#" className="modal__link modal__link--add">
+        <li key="add" className="modal__item">
+          <NavLink to="/new" className="modal__link modal__link--add">
             add new
-          </a>
+          </NavLink>
         </li>
       </ul>
     </div>

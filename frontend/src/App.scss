@@ -10,7 +10,6 @@ body {
   font-family: $font-family;
   background-color: $background;
   width: 100vw;
-  height: 100vh;
   color: white;
 }
 
@@ -49,4 +48,41 @@ p {
 
 .highlight {
   font-weight: 800;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  &__title {
+    @include subtitle(white);
+  }
+  & label {
+    margin: 0.5rem 0;
+    text-transform: uppercase;
+  }
+  &-field {
+    @include form-field;
+    width: 50%;
+  }
+  &__input {
+    @include form-field;
+    @include divider($grey);
+    background-color: white;
+    height: 40px;
+    font-family: inherit;
+  }
+  &__btn {
+    @include btn($light-green);
+    font-family: inherit;
+    &-container {
+      @include tablet {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row-reverse;
+      }
+    }
+    &--reset {
+      @include btn($grey);
+    }
+  }
 }
