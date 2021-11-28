@@ -20,7 +20,7 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
   return (
     <div className="edit-habit">
       <img
-        className="add-activity__close"
+        className="edit-habit__close"
         src={close}
         alt="close"
         onClick={() => {
