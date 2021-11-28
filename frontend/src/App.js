@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+} from "react-router-dom";
 import Modal from "./components/Modal";
 import Habit from "./components/Habit";
 import Pomodoro from "./components/Pomodoro";
+import AddHabit from "./components/AddHabit";
 import hamburger from "./assets/icons/hamburger.svg";
 import "./App.scss";
 
@@ -47,10 +53,28 @@ const App = () => {
             ) : null}
             <Route path="/pomodoro" exact component={Pomodoro} />
             <Route
-              path="/:id"
-              render={(props) => <Habit habitList={habitList} />}
+              path="/new"
+              exact
+              render={(props) => (
+                <AddHabit
+                  setHabitList={setHabitList}
+                  habitList={habitList}
+                />
+              )}
             />
-            <Route path="/" exact component={Habit} />
+            <Route
+              path="/:name"
+              render={(props) => (
+                <Habit habitList={habitList} />
+              )}
+            />
+            <Route
+              path="/"
+              exact
+              render={(props) => (
+                <Habit habitList={habitList} />
+              )}
+            />
           </Switch>
         </Router>
       </div>

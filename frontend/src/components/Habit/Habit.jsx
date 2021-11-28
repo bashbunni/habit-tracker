@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CalendarHeatmap from "react-calendar-heatmap";
 import ReactTooltip from "react-tooltip";
 import edit from "../../assets/icons/btn--edit.png";
@@ -7,18 +7,23 @@ import AddActivity from "../AddActivity";
 import EditHabit from "../EditHabit";
 import Pomodoro from "../Pomodoro";
 import "./Habit.scss";
+import { useHistory } from "react-router-dom";
 
 const today = new Date();
 
-const Habit = () => {
+const Habit = ({ habitList }) => {
   // state
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
-  const [habit, setHabit] = useState({
-    name: "yoga",
-    why: "I want to do yoga every day so that I can be more relaxed",
-    unit: "hours",
-  });
+  const [habit, setHabit] = useState(habitList[0]);
+  const history = useHistory();
+
+  useEffect(() => {
+    history.listen((path) => {
+      console.log(habitList);
+      setHabit(habitList.find((habit) => habit.name === path.pathname));
+    });
+  }, [history]);
 
   // helpers
   const randomValues = getRange(364).map((index) => {
