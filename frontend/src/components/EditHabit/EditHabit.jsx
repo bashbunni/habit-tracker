@@ -49,8 +49,8 @@ const EditHabit = ({ habit, setEditOpen }) => {
           value={habit.why}
         />
         <div className="form__btn-container">
-          <button className="form__btn">save</button>
-          <button className="form__btn--reset">cancel</button>
+          <button className="form__btn" type="submit">save</button>
+          <button className="form__btn--reset" onClick={() => {setEditOpen(false)}}>cancel</button>
         </div>
       </form>
     </div>
