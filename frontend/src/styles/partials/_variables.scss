@@ -27,3 +27,20 @@ $tablet-size: 768px;
 $modal-width: 350px;
 $default-border: 10px;
 $form-field-height: 25px;
+$btn-height: 50px;
+
+/* ***********
+ * typography
+ * ***********/
+
+$m-body-size: toRem(12px);
+$dt-body-size: toRem(14px);
+$body-weight: 400;
+$body-height: toRem(20px);
+
+$subheader-size: 600;
+$subheader-weight: 600;
+
+$header-size: toRem(22px);
+$header-weight: 600;
+$body-height: toRem(28px);

@@ -10,7 +10,6 @@ body {
   font-family: $font-family;
   background-color: $background;
   width: 100vw;
-  height: 100vh;
   color: white;
 }
 
@@ -61,4 +60,17 @@ p {
     @include form-field;
     width: 50%;
   }
+  &__input {
+    @include divider($grey);
+    border-radius: $default-border;
+    background-color: white;
+    height: $btn-height;
+  }
+  &__btn {
+    @include btn($light-green);
+    &--reset {
+      @include btn($grey);
+    }
+  }
 }
+
