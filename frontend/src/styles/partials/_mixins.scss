@@ -33,10 +33,22 @@
 @mixin btn($color) {
   border: $color 1px solid;
   border-radius: $default-border;
+  color: $color;
+  background-color: $background;
   font-size: 1.125rem;
   text-transform: uppercase;
   font-weight: 800;
   cursor: pointer;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  @include tablet {
+    min-width: 120px;
+    min-height: 50px;
+    max-width: 120px;
+    max-height: 50px;
+    margin-left: 2rem;
+  }
   &:hover {
     background-color: $color;
     color: white;
@@ -49,4 +61,11 @@
   background-color: white;
   border-radius: $default-border;
   padding-left: 1rem;
+}
+
+@mixin close {
+  align-self: flex-end;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
 }
