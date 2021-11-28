@@ -21,6 +21,7 @@
     margin-left: 1.5rem;
     max-width: 30px;
     max-height: 30px;
+    cursor: pointer;
   }
   &__about {
     display: flex;
@@ -62,66 +63,6 @@
       background-repeat: no-repeat;
       background-size: 15px;
       background-position: 7px;
-    }
-  }
-}
-
-.pomodoro {
-  @include divider($blue);
-  border-radius: $default-border;
-  height: 100%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  &__title {
-    @include subtitle(white);
-    font-size: 1.5rem;
-  }
-  &__image {
-    width: 90%;
-  }
-  &__quote {
-    max-width: 100%;
-    margin: 0;
-  }
-  &__bottom {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: 2rem 0;
-    @include tablet {
-      flex-direction: row;
-      align-items: flex-end;
-      justify-content: space-between;
-    }
-  }
-  &__buttons {
-    display: flex;
-    flex-direction: column-reverse;
-    @include tablet {
-      flex-direction: row;
-    }
-  }
-  &__btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 1rem;
-    width: 100%;
-    margin-top: 1.5rem;
-    @include tablet {
-      margin-left: 2rem;
-      min-width: 120px;
-      min-height: 50px;
-      max-width: 120px;
-      max-height: 50px;
-    }
-    &--reset {
-      @include btn($grey);
-    }
-    &--start {
-      @include btn($blue);
     }
   }
 }

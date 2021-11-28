@@ -1,0 +1,9 @@
+@use "../../styles/partials/_mixins.scss" as *;
+@use "../../styles/partials/_variables.scss" as *;
+
+.add-activity {
+  @include modal($blue);
+  &__close {
+    @include close;
+  }
+}
