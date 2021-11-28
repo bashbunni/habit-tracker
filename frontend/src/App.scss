@@ -69,9 +69,11 @@ p {
     @include divider($grey);
     background-color: white;
     height: 40px;
+    font-family: inherit;
   }
   &__btn {
     @include btn($light-green);
+    font-family: inherit;
     &-container {
       @include tablet {
         display: flex;
