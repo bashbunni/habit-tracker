@@ -14,13 +14,13 @@ const Habit = () => {
   // state
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
-
-  // mock data
-  const habit = {
+  const [habit, setHabit] = useState({
     name: "yoga",
     why: "I want to do yoga every day so that I can be more relaxed",
     unit: "hours",
-  };
+  })
+
+  // mock data
   const timeRemaining = "10 minutes 58 seconds";
   const quote = {
     text: "Logic will get you from A to Z; imagination will get you everywhere.",
@@ -39,7 +39,7 @@ const Habit = () => {
       {addOpen ? (
         <AddActivity unit={habit.unit} setAddOpen={setAddOpen} />
       ) : null}
-      {editOpen ? <EditHabit habit={habit} setEditOpen={setEditOpen} /> : null}
+      {editOpen ? <EditHabit habit={habit} setHabit={setHabit} setEditOpen={setEditOpen} /> : null}
       <div className="habit__header">
         <h1 className="habit__title">{habit.name}</h1>
         <img
