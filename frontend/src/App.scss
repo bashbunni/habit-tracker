@@ -68,12 +68,19 @@ p {
     @include form-field;
     @include divider($grey);
     background-color: white;
+    height: 40px;
   }
   &__btn {
     @include btn($light-green);
+    &-container {
+      @include tablet {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row-reverse;
+      }
+    }
     &--reset {
       @include btn($grey);
     }
   }
 }
-
