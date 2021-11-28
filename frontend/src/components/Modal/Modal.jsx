@@ -1,10 +1,9 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 import "./Modal.scss";
 import close from "../../assets/icons/remove.svg";
 
 const Modal = ({ closeModal, habitList }) => {
-  console.log(habitList);
   return (
     <div className="modal">
       <img
@@ -16,7 +15,7 @@ const Modal = ({ closeModal, habitList }) => {
       <ul className="modal__list">
         {habitList.map((habit) => (
           <li key={habit.id} className="modal__item">
-            <NavLink to={`/${habit.id}`} className="modal__link">
+            <NavLink to={`/${habit.name}`} className="modal__link">
               {habit.name}
             </NavLink>
           </li>
