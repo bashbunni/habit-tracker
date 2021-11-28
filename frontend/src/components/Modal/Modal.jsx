@@ -1,8 +1,10 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Modal.scss";
 import close from "../../assets/icons/remove.svg";
 
 const Modal = ({ closeModal, habitList }) => {
+  console.log(habitList);
   return (
     <div className="modal">
       <img
@@ -13,21 +15,21 @@ const Modal = ({ closeModal, habitList }) => {
       />
       <ul className="modal__list">
         {habitList.map((habit) => (
-          <li key={habit} className="modal__item">
-            <a href={habit} className="modal__link">
-              {habit}
-            </a>
+          <li key={habit.id} className="modal__item">
+            <NavLink to={`/${habit.id}`} className="modal__link">
+              {habit.name}
+            </NavLink>
           </li>
         ))}
         <li key="pomodoro" className="modal__item">
-          <a href="#" className="modal__link modal__link--pomodoro">
+          <NavLink to="/pomodoro" className="modal__link modal__link--pomodoro">
             pomodoro
-          </a>
+          </NavLink>
         </li>
         <li key="add" className="modal__item">
-          <a href="#" className="modal__link modal__link--add">
+          <NavLink to="/new" className="modal__link modal__link--add">
             add new
-          </a>
+          </NavLink>
         </li>
       </ul>
     </div>
