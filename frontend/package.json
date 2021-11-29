@@ -1,0 +1,40 @@
+{
+  "name": "habit_tracker",
+  "author": "bashbunni<bashbunni.io@gmail.com>",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "react": "^17.0.2",
+    "wails-react-scripts": "3.0.1-2",
+    "@wailsapp/runtime": "^1.0.10",
+    "react-calendar-heatmap": "^1.8.1",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "5.3",
+    "react-scripts": "4.0.3",
+    "react-tooltip": "^4.2.21",
+    "sass": "^1.43.4",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "serve": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

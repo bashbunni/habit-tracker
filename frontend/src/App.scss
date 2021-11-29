@@ -1,0 +1,88 @@
+@use "./styles/partials/variables" as *;
+@use "./styles/partials/mixins" as *;
+@use "./styles/partials/typography" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  background-color: $background;
+  width: 100vw;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  font-size: 1rem;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  margin: 2rem;
+  @include tablet {
+    max-width: $container-max;
+  }
+}
+
+.hamburger {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.highlight {
+  font-weight: 800;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  &__title {
+    @include subtitle(white);
+  }
+  & label {
+    margin: 0.5rem 0;
+    text-transform: uppercase;
+  }
+  &-field {
+    @include form-field;
+    width: 50%;
+  }
+  &__input {
+    @include form-field;
+    @include divider($grey);
+    background-color: white;
+    height: 40px;
+    font-family: inherit;
+  }
+  &__btn {
+    @include btn($light-green);
+    font-family: inherit;
+    &-container {
+      @include tablet {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row-reverse;
+      }
+    }
+    &--reset {
+      @include btn($grey);
+    }
+  }
+}
