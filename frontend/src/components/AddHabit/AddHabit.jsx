@@ -8,12 +8,6 @@ const AddHabit = ({ setHabitList, habitList }) => {
   const history = useHistory();
   return (
     <div className="add-habit">
-      <img
-        className="add-habit__close"
-        src={close}
-        alt="close"
-        onClick={() => <Redirect to="/" />}
-      />
       <form
         className="form"
         onSubmit={(e) => {
