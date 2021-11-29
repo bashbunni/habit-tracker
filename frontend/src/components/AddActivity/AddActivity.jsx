@@ -28,7 +28,7 @@ const AddActivity = ({ unit, setAddOpen }) => {
         <div className="form__btn-container">
           <button className="form__btn">submit</button>
           <button
-            className="form__btn--reset"
+            className="form__btn form__btn--reset"
             onClick={(e) => {
               e.preventDefault();
               setAddOpen(false);
