@@ -11,10 +11,11 @@
   }
   &__title {
     @include maintitle;
-    margin: auto;
-    margin-left: 0;
+    margin: 0;
     @include tablet {
       margin: 0 auto;
+      position: relative;
+      left: 54px;
     }
   }
   &__icon {
@@ -31,6 +32,9 @@
     @include divider($light-green);
     border-radius: $default-border;
     padding: 1rem;
+    @include tablet {
+      padding: 1rem 3rem;
+    }
   }
 }
 
@@ -45,7 +49,6 @@
 
 .goal {
   display: flex;
-  margin-right: 3rem;
   &__title {
     text-transform: uppercase;
     margin: 0;
