@@ -14,6 +14,7 @@ const App = () => {
   const closeNav = () => setNavModal(false);
   const mountedRef = useRef(true);
 
+  // TODO: refresh habitList when the backend changes instead of having to reload webpage
   useEffect(() => {
     if (mountedRef.current) {
       window.backend.Habits.GetHabits().then((response) => {
