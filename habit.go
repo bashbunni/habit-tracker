@@ -1,5 +1,9 @@
 package main
 
+import (
+	"encoding/json"
+)
+
 type Habit struct {
 	// need to start with an uppercase letter to export it
 	Id       uint   `json:"id"`
@@ -35,8 +39,11 @@ func NewHabits() *Habits {
 
 // AddHabit adds a habit to a Habits instance.
 // It returns true on successful completion.
-func (h *Habits) AddHabit(habit *Habit) bool {
-	h.habits = append(h.habits, habit)
+// Receives a JSON Habit object
+func (h *Habits) AddHabit(req []byte) bool {
+	var habit Habit
+	json.Unmarshal(req, &habit)
+	h.habits = append(h.habits, &habit)
 	return true
 }
 
