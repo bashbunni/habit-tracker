@@ -5,10 +5,6 @@ import (
   "github.com/wailsapp/wails"
 )
 
-func basic() string {
-  return "World!"
-}
-
 func main() {
 
   app := wails.CreateApp(&wails.AppConfig{
@@ -17,6 +13,5 @@ func main() {
     Title:  "habit_tracker",
     Colour: "#131313",
   })
-  app.Bind(basic)
   app.Run()
 }
