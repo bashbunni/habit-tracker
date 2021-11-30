@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Modal from "./components/Modal";
 import Habit from "./components/Habit";
@@ -12,12 +12,17 @@ const App = () => {
   const [navModal, setNavModal] = useState(false);
   const openNav = () => setNavModal(true);
   const closeNav = () => setNavModal(false);
+  const mountedRef = useRef(true);
 
   useEffect(() => {
-    window.backend.GetHabits().then((response) => {
-      console.log(response);
-      setHabitList(response);
-    });
+    if (mountedRef.current) {
+      window.backend.Habits.GetHabits().then((response) => {
+        console.log(response);
+        setHabitList(response);
+        // TODO: why is this habitList still null? It says it's trying to set state on unmounted component
+      });
+    }
+    return () => (mountedRef.current = false);
   }, []);
 
   return (

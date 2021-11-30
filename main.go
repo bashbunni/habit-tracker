@@ -14,6 +14,7 @@ func main() {
 		Title:  "habit_tracker",
 		Colour: "#131313",
 	})
-	app.Bind(GetHabits)
+	app.Bind(NewHabits())
+	app.Bind(NewHabit)
 	app.Run()
 }
