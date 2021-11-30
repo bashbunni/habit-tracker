@@ -1,12 +1,13 @@
 {
-  "name": "frontend",
+  "name": "habit_tracker",
+  "author": "bashbunni",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.15.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
+    "core-js": "^3.6.4",
     "react": "^17.0.2",
+    "wails-react-scripts": "3.0.1-2",
+    "@wailsapp/runtime": "^1.0.10",
     "react-calendar-heatmap": "^1.8.1",
     "react-dom": "^17.0.2",
     "react-router-dom": "5.3",
@@ -16,16 +17,13 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "serve": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
