@@ -24,27 +24,23 @@ type Habits struct {
 }
 
 // mock database
-func (h *Habits) NewHabits() {
-	h.habits = []*Habit{
+func NewHabits() *Habits {
+	return &Habits{habits: []*Habit{
 		{Id: 1, Name: "yoga", Unit: "hours", Pomodoro: false, Why: "I want to do yoga so I can be more relaxed"},
 		{Id: 2, Name: "meditation", Unit: "15 minutes", Pomodoro: false, Why: "I want to meditate so I can be more present"},
 		{Id: 3, Name: "hydration", Unit: "litres", Pomodoro: false, Why: "I want to be hydrated so I can feel better"},
+	},
 	}
 }
 
-// mock add habit to list of habits
-// return true if habit is added successfully
-func (h Habits) AddHabit(habit *Habit) bool {
+// AddHabit adds a habit to a Habits instance.
+// It returns true on successful completion.
+func (h *Habits) AddHabit(habit *Habit) bool {
 	h.habits = append(h.habits, habit)
 	return true
 }
 
-// mock data for getting habits
-func GetHabits() []*Habit {
-	var habits = []*Habit{
-		{Id: 1, Name: "yoga", Unit: "hours", Pomodoro: false, Why: "I want to do yoga so I can be more relaxed"},
-		{Id: 2, Name: "meditation", Unit: "15 minutes", Pomodoro: false, Why: "I want to meditate so I can be more present"},
-		{Id: 3, Name: "hydration", Unit: "litres", Pomodoro: false, Why: "I want to be hydrated so I can feel better"},
-	}
-	return habits
+// GetHabits retrieves the list of Habits from a Habits instance.
+func (h Habits) GetHabits() []*Habit {
+	return h.habits
 }
