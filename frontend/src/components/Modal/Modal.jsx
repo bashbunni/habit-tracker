@@ -14,18 +14,18 @@ const Modal = ({ closeModal, habitList }) => {
       />
       <ul className="modal__list">
         {habitList.map((habit) => (
-          <li key={habit.id} className="modal__item">
+          <li key={habit.id} className="modal__item" onClick={closeModal}>
             <NavLink to={`/${habit.name}`} className="modal__link">
               {habit.name}
             </NavLink>
           </li>
         ))}
-        <li key="pomodoro" className="modal__item">
+        <li key="pomodoro" className="modal__item" onClick={closeModal}>
           <NavLink to="/pomodoro" className="modal__link modal__link--pomodoro">
             pomodoro
           </NavLink>
         </li>
-        <li key="add" className="modal__item">
+        <li key="add" className="modal__item" onClick={closeModal}>
           <NavLink to="/new" className="modal__link modal__link--add">
             add new
           </NavLink>
