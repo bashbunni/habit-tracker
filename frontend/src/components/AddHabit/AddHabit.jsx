@@ -6,13 +6,23 @@ import "./AddHabit.scss";
 const AddHabit = ({ setHabitList, habitList }) => {
   const [habit, setHabit] = useState({});
   const history = useHistory();
+
+  const addHabit = () => {
+    window.backend
+      .NewHabit(habit.id, habit.name, habit.unit, habit.pomodoro, habit.why)
+      .then((response) => {
+        console.log(response);
+        window.backend.Habits.AddHabit(JSON.stringify(response));
+      });
+  };
+
   return (
     <div className="add-habit">
       <form
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
-          setHabitList(...habitList, habit);
+          addHabit();
           setTimeout(() => {
             alert("habit added!");
             history.push(`/${habit.name}`);
