@@ -3,7 +3,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import close from "../../assets/icons/remove.svg";
 import "./AddHabit.scss";
 
-const AddHabit = ({ setHabitList, habitList }) => {
+const AddHabit = ({ setHabitList, habitList, updateHabits }) => {
   const [habit, setHabit] = useState({});
   const history = useHistory();
 
@@ -11,8 +11,9 @@ const AddHabit = ({ setHabitList, habitList }) => {
     window.backend
       .NewHabit(habit.id, habit.name, habit.unit, habit.pomodoro, habit.why)
       .then((response) => {
-        console.log(response);
         window.backend.Habits.AddHabit(JSON.stringify(response));
+        updateHabits();
+        history.push(`/`);
       });
   };
 
@@ -29,10 +30,6 @@ const AddHabit = ({ setHabitList, habitList }) => {
         onSubmit={(e) => {
           e.preventDefault();
           addHabit();
-          setTimeout(() => {
-            alert("habit added!");
-            history.push(`/${habit.name}`);
-          }, 2000);
         }}
       >
         <h1 className="form__title">Add Habit</h1>
