@@ -12,6 +12,7 @@
   &__title {
     @include maintitle;
     margin: 0;
+    margin-right: auto;
     @include tablet {
       margin: 0 auto;
       position: relative;

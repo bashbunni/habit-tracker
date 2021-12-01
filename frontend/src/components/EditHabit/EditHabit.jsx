@@ -1,9 +1,17 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import close from "../../assets/icons/remove.svg";
 import "./EditHabit.scss";
 
-const EditHabit = ({ habit, setHabit, setEditOpen }) => {
+const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
   const [tempHabit, setTempHabit] = useState(habit);
+  const history = useHistory();
+
+  const deleteHabit = () => {
+    window.backend.Habits.DeleteHabit(habit.id);
+    updateHabits();
+    history.push("/");
+  };
   return (
     <div className="edit-habit">
       <img
@@ -18,7 +26,11 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
-          setHabit({ name: tempHabit.name, unit: tempHabit.unit, why: tempHabit.why });
+          setHabit({
+            name: tempHabit.name,
+            unit: tempHabit.unit,
+            why: tempHabit.why,
+          });
           setEditOpen(false);
         }}
       >
@@ -64,13 +76,16 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
             save
           </button>
           <button
-            className="form__btn--reset"
+            className="form__btn form__btn--reset"
             onClick={(e) => {
               e.preventDefault();
               setEditOpen(false);
             }}
           >
             cancel
+          </button>
+          <button className="form__btn form__btn--delete" onClick={deleteHabit}>
+            delete
           </button>
         </div>
       </form>

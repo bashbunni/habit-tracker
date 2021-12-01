@@ -10,7 +10,7 @@ import "./Habit.scss";
 
 const today = new Date();
 
-const Habit = ({ habitList }) => {
+const Habit = ({ habitList, updateHabits }) => {
   const url = window.location.pathname.split("/").pop();
   // state
   const [addOpen, setAddOpen] = useState(false);
@@ -39,12 +39,18 @@ const Habit = ({ habitList }) => {
     <>
       {habit && (
         <div className="habit">
-          {addOpen && <AddActivity unit={habit.unit} setAddOpen={setAddOpen} />}
+          {addOpen && (
+            <AddActivity
+              unit={habit.unit}
+              setAddOpen={setAddOpen}
+            />
+          )}
           {editOpen && (
             <EditHabit
               habit={habit}
               setHabit={setHabit}
               setEditOpen={setEditOpen}
+              updateHabits={updateHabits}
             />
           )}
           <div className="habit__header">
