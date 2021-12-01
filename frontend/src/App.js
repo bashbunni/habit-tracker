@@ -47,17 +47,25 @@ const App = () => {
                 path="/new"
                 exact
                 render={(props) => (
-                  <AddHabit setHabitList={setHabitList} habitList={habitList} />
+                  <AddHabit
+                    setHabitList={setHabitList}
+                    habitList={habitList}
+                    updateHabits={updateHabits}
+                  />
                 )}
               />
               <Route
                 path="/:name"
-                render={(props) => <Habit habitList={habitList} />}
+                render={(props) => (
+                  <Habit habitList={habitList} updateHabits={updateHabits} />
+                )}
               />
               <Route
                 path="/"
                 exact
-                render={(props) => <Habit habitList={habitList} updateHabits={updateHabits} />}
+                render={(props) => (
+                  <Habit habitList={habitList} updateHabits={updateHabits} />
+                )}
               />
             </Switch>
           </Router>
