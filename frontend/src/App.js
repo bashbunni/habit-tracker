@@ -14,11 +14,15 @@ const App = () => {
   const closeNav = () => setNavModal(false);
   const mountedRef = useRef(true);
 
+  function updateHabits() {
+    window.backend.Habits.GetHabits().then((response) => {
+      setHabitList(response);
+    });
+  }
+
   useEffect(() => {
     if (mountedRef.current) {
-      window.backend.Habits.GetHabits().then((response) => {
-        setHabitList(response);
-      });
+      updateHabits();
     }
     return () => (mountedRef.current = false);
   }, []);
@@ -43,17 +47,23 @@ const App = () => {
                 path="/new"
                 exact
                 render={(props) => (
-                  <AddHabit setHabitList={setHabitList} habitList={habitList} />
+                  <AddHabit
+                    updateHabits={updateHabits}
+                  />
                 )}
               />
               <Route
                 path="/:name"
-                render={(props) => <Habit habitList={habitList} />}
+                render={(props) => (
+                  <Habit habitList={habitList} updateHabits={updateHabits} />
+                )}
               />
               <Route
                 path="/"
                 exact
-                render={(props) => <Habit habitList={habitList} />}
+                render={(props) => (
+                  <Habit habitList={habitList} updateHabits={updateHabits} />
+                )}
               />
             </Switch>
           </Router>
