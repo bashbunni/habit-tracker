@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import close from "../../assets/icons/remove.svg";
 import "./EditHabit.scss";
 
-const EditHabit = ({ habit, setHabit, setEditOpen }) => {
+const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
   const [tempHabit, setTempHabit] = useState(habit);
+  const history = useHistory();
+
   const deleteHabit = () => {
     window.backend.Habits.DeleteHabit(habit.id);
+    updateHabits();
+    history.push("/");
   };
   return (
     <div className="edit-habit">
