@@ -14,12 +14,15 @@ const App = () => {
   const closeNav = () => setNavModal(false);
   const mountedRef = useRef(true);
 
-  // TODO: refresh habitList when the backend changes instead of having to reload webpage
+  function updateHabits() {
+    window.backend.Habits.GetHabits().then((response) => {
+      setHabitList(response);
+    });
+  }
+
   useEffect(() => {
     if (mountedRef.current) {
-      window.backend.Habits.GetHabits().then((response) => {
-        setHabitList(response);
-      });
+      updateHabits();
     }
     return () => (mountedRef.current = false);
   }, []);
@@ -54,7 +57,7 @@ const App = () => {
               <Route
                 path="/"
                 exact
-                render={(props) => <Habit habitList={habitList} />}
+                render={(props) => <Habit habitList={habitList} updateHabits={updateHabits} />}
               />
             </Switch>
           </Router>

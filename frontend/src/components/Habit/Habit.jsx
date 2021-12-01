@@ -10,7 +10,7 @@ import "./Habit.scss";
 
 const today = new Date();
 
-const Habit = ({ habitList }) => {
+const Habit = ({ habitList, updateHabits }) => {
   const url = window.location.pathname.split("/").pop();
   // state
   const [addOpen, setAddOpen] = useState(false);
@@ -45,6 +45,7 @@ const Habit = ({ habitList }) => {
               habit={habit}
               setHabit={setHabit}
               setEditOpen={setEditOpen}
+              updateHabits={updateHabits}
             />
           )}
           <div className="habit__header">
