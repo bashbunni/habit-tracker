@@ -4,6 +4,9 @@ import "./EditHabit.scss";
 
 const EditHabit = ({ habit, setHabit, setEditOpen }) => {
   const [tempHabit, setTempHabit] = useState(habit);
+  const deleteHabit = () => {
+    window.backend.Habits.DeleteHabit(habit.id);
+  };
   return (
     <div className="edit-habit">
       <img
@@ -76,7 +79,7 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
           >
             cancel
           </button>
-          <button className="form__btn form__btn--delete" type="submit">
+          <button className="form__btn form__btn--delete" onClick={deleteHabit}>
             delete
           </button>
         </div>
