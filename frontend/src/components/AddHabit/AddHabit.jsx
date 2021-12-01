@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
-import close from "../../assets/icons/remove.svg";
+import { useHistory } from "react-router-dom";
 import "./AddHabit.scss";
 
-const AddHabit = ({ setHabitList, habitList, updateHabits }) => {
+const AddHabit = ({ updateHabits }) => {
   const [habit, setHabit] = useState({});
   const history = useHistory();
 

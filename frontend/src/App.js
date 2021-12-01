@@ -48,8 +48,6 @@ const App = () => {
                 exact
                 render={(props) => (
                   <AddHabit
-                    setHabitList={setHabitList}
-                    habitList={habitList}
                     updateHabits={updateHabits}
                   />
                 )}
