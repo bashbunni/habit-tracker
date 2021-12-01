@@ -18,7 +18,11 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
-          setHabit({ name: tempHabit.name, unit: tempHabit.unit, why: tempHabit.why });
+          setHabit({
+            name: tempHabit.name,
+            unit: tempHabit.unit,
+            why: tempHabit.why,
+          });
           setEditOpen(false);
         }}
       >
@@ -64,13 +68,16 @@ const EditHabit = ({ habit, setHabit, setEditOpen }) => {
             save
           </button>
           <button
-            className="form__btn--reset"
+            className="form__btn form__btn--reset"
             onClick={(e) => {
               e.preventDefault();
               setEditOpen(false);
             }}
           >
             cancel
+          </button>
+          <button className="form__btn form__btn--delete" type="submit">
+            delete
           </button>
         </div>
       </form>

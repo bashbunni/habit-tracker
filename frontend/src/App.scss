@@ -84,5 +84,9 @@ p {
     &--reset {
       @include btn($grey);
     }
+    &--delete {
+      @include btn($red);
+    }
+
   }
 }
