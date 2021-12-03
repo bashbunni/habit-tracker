@@ -8,10 +8,12 @@ const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
   const history = useHistory();
 
   const deleteHabit = () => {
-    window.backend.Habits.DeleteHabit(habit.id);
+    window.backend.MySQLHabitRepository.DeleteHabit(habit.id);
     updateHabits();
     history.push("/");
   };
+
+  // TODO: edit habit on DB
   return (
     <div className="edit-habit">
       <img

@@ -17,8 +17,8 @@ type Habit struct {
 }
 
 // create a new Habit
-func NewHabit(ID uint, Name string, Unit string, Pomodoro bool, Why string) *Habit {
-	return &Habit{ID: ID, Name: Name, Unit: Unit, Pomodoro: Pomodoro, Why: Why}
+func NewHabit(ID uint, Name string, Unit string, Pomodoro bool, Why string) Habit {
+	return Habit{ID: ID, Name: Name, Unit: Unit, Pomodoro: Pomodoro, Why: Why}
 }
 
 /* ******

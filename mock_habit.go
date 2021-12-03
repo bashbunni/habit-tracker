@@ -11,6 +11,11 @@ type MockHabitRepository struct {
 	habits []*Habit
 }
 
+// GetHabits retrieves the list of Habits.
+func (m MockHabitRepository) GetAllHabits() []*Habit {
+	return m.habits
+}
+
 // Initialize mock database with sample data.
 func (m MockHabitRepository) NewHabits() *Habits {
 	return &Habits{habits: []*Habit{
@@ -22,7 +27,7 @@ func (m MockHabitRepository) NewHabits() *Habits {
 }
 
 // findHabit finds a habit with a given ID.
-func (m MockHabitRepository) findHabit(id uint) *Habit {
+func (m MockHabitRepository) GetHabit(id uint) *Habit {
 	for i := range m.habits {
 		if m.habits[i].ID == id {
 			return m.habits[i]
@@ -34,9 +39,7 @@ func (m MockHabitRepository) findHabit(id uint) *Habit {
 // AddHabit adds a habit to Habits.
 // It returns true on successful completion.
 // Receives a JSON Habit object
-func (m MockHabitRepository) AddHabit(req []byte) bool {
-	var habit Habit
-	json.Unmarshal(req, &habit)
+func (m MockHabitRepository) AddHabit(habit Habit) bool {
 	m.habits = append(m.habits, &habit)
 	return true
 }
@@ -45,7 +48,7 @@ func (m MockHabitRepository) AddHabit(req []byte) bool {
 func (m MockHabitRepository) EditHabit(req []byte) (*Habit, error) {
 	var changes Habit
 	json.Unmarshal(req, &changes)
-	target := m.findHabit(changes.ID)
+	target := m.GetHabit(changes.ID)
 	if target == nil {
 		return nil, errors.Errorf("habit with id %d not found", changes.ID)
 	}
@@ -63,10 +66,5 @@ func (m MockHabitRepository) DeleteHabit(id uint) []*Habit {
 			fmt.Print(m.habits)
 		}
 	}
-	return m.habits
-}
-
-// GetHabits retrieves the list of Habits from a Habits instance.
-func (m MockHabitRepository) GetHabits() []*Habit {
 	return m.habits
 }

@@ -25,8 +25,6 @@ func DBConnect() (db *sql.DB) {
 	dbHost := getEnvVariable("HOST")
 	dbPort := getEnvVariable("PORT")
 	dbName := getEnvVariable("DATABASE")
-
-
 	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUsername, dbPassword, dbHost, dbPort, dbName))
 
 	if err != nil {
