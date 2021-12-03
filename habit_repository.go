@@ -1,6 +1,7 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"log"
 )
@@ -10,6 +11,10 @@ type HabitRepository interface {
 	AddHabit(Habit) error
 	EditHabit(Habit) Habit
 	DeleteHabit(uint) bool
+}
+
+type MySQLHabitRepository struct {
+	DB *sql.DB
 }
 
 func GetHabits() []Habit {
