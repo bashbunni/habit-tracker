@@ -3,11 +3,13 @@ package main
 import (
 	_ "embed"
 	"fmt"
+
 	"github.com/wailsapp/wails"
 )
 
 func main() {
 	fmt.Print(GetHabits())
+	fmt.Println(EditHabit(Habit{ID: 2, Name: "Hydration", Unit: "cups", Pomodoro: false, Why: "I want to drink more water so I can feel better"}))
 	app := wails.CreateApp(&wails.AppConfig{
 		Width:  1024,
 		Height: 768,
