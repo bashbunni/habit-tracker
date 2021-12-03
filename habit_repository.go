@@ -39,9 +39,12 @@ func EditHabit(habit Habit) Habit {
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := db.Exec("SELECT * FROM habit WHERE habit_id = ?", habit.ID)
-	fmt.Println(res)
-	return Habit{}
+	var result Habit
+	err = db.QueryRow("SELECT * FROM habit WHERE habit_id = ?", habit.ID).Scan(&result.ID, &result.Name, &result.Unit, &result.Pomodoro, &result.Why)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return result
 }
 
 func AddHabit(habit Habit) error {
