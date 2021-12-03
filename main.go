@@ -2,22 +2,32 @@ package main
 
 import (
 	_ "embed"
-	"fmt"
 
 	"github.com/wailsapp/wails"
 )
 
 func main() {
-	fmt.Print(GetHabits())
-	fmt.Println(EditHabit(Habit{ID: 2, Name: "hydration", Unit: "litres", Pomodoro: false, Why: "I want to drink more water so I can feel better"}))
-	fmt.Println(DeleteHabit(2))
+	/*
+		mysql := NewMySQLConnection()
+		sample := Habit{2, "hydration", "litres", false, "I want to be healthier"}
+		sampleJson, err := json.Marshal(sample)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("%s", sampleJson)
+		err = mysql.AddHabitFromJSON(sampleJson)
+		if err != nil {
+			log.Fatal(err)
+		}
+	*/
 	app := wails.CreateApp(&wails.AppConfig{
 		Width:  1024,
 		Height: 768,
 		Title:  "habit_tracker",
 		Colour: "#131313",
 	})
-	app.Bind(NewHabits())
+	app.Bind(NewMySQLConnection())
 	app.Bind(NewHabit)
+	app.Bind(JSONToHabit)
 	app.Run()
 }
