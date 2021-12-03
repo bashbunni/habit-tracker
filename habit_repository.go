@@ -32,6 +32,14 @@ func GetHabits() []Habit {
 	return habits
 }
 
+func AddHabit(habit Habit) error {
+	db := DBConnect()
+	defer db.Close()
+	insert := fmt.Sprintf("INSERT INTO habit(habit_id, habit_name, habit_unit, habit_pomodoro, habit_why) VALUES (%d, %s, %s, %v, %s)", habit.ID, habit.Name, habit.Unit, habit.Pomodoro, habit.Why)
+	_, err := db.Exec(insert)
+	return err
+}
+
 func EditHabit(habit Habit) Habit {
 	db := DBConnect()
 	defer db.Close()
@@ -47,10 +55,12 @@ func EditHabit(habit Habit) Habit {
 	return result
 }
 
-func AddHabit(habit Habit) error {
+func DeleteHabit(id uint) bool {
 	db := DBConnect()
 	defer db.Close()
-	insert := fmt.Sprintf("INSERT INTO habit(habit_id, habit_name, habit_unit, habit_pomodoro, habit_why) VALUES (%d, %s, %s, %v, %s)", habit.ID, habit.Name, habit.Unit, habit.Pomodoro, habit.Why)
-	_, err := db.Exec(insert)
-	return err
+	_, err := db.Exec("DELETE FROM habit WHERE habit_id = ?", id)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return true
 }
