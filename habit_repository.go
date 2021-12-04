@@ -68,12 +68,13 @@ func (s MySQLHabitRepository) AddHabit(habit Habit) error {
 	return err
 }
 
-func (s MySQLHabitRepository) EditHabit(habit Habit) Habit {
+func (s MySQLHabitRepository) EditHabitFromJSON(req []byte) error {
+	return s.EditHabit(JSONToHabit(req))
+}
+
+func (s MySQLHabitRepository) EditHabit(habit Habit) error {
 	_, err := s.DB.Exec("UPDATE habit SET habit_id = ?, habit_name = ?, habit_unit = ?, habit_pomodoro = ?, habit_why = ? WHERE habit_id = ?", habit.ID, habit.Name, habit.Unit, habit.Pomodoro, habit.Why, habit.ID)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return s.GetHabit(habit.ID)
+	return err
 }
 
 func (s MySQLHabitRepository) DeleteHabit(id uint) bool {

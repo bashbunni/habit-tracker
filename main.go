@@ -9,13 +9,13 @@ import (
 func main() {
 	/*
 		mysql := NewMySQLConnection()
-		sample := Habit{2, "hydration", "litres", false, "I want to be healthier"}
+		sample := Habit{2, "hydration", "litres", false, "I want to be more hydrated"}
 		sampleJson, err := json.Marshal(sample)
 		if err != nil {
 			log.Fatal(err)
 		}
 		fmt.Printf("%s", sampleJson)
-		err = mysql.AddHabitFromJSON(sampleJson)
+		err = mysql.EditHabitFromJSON(sampleJson)
 		if err != nil {
 			log.Fatal(err)
 		}
