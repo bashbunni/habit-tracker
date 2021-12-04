@@ -8,10 +8,22 @@ const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
   const history = useHistory();
 
   const deleteHabit = () => {
-    window.backend.Habits.DeleteHabit(habit.id);
+    window.backend.MySQLHabitRepository.DeleteHabit(habit.id);
     updateHabits();
     history.push("/");
   };
+
+  const EditHabit = () => {
+    window.backend.MySQLHabitRepository.EditHabitFromJSON(
+      JSON.stringify(tempHabit)
+    ).catch((err) => {
+      updateHabits();
+    });
+
+    setEditOpen(false);
+  };
+
+  // TODO: edit habit on DB
   return (
     <div className="edit-habit">
       <img
@@ -26,12 +38,13 @@ const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
+          EditHabit();
+          // TODO: can I remove this setHabit? seems to be needed for current render...
           setHabit({
             name: tempHabit.name,
             unit: tempHabit.unit,
             why: tempHabit.why,
           });
-          setEditOpen(false);
         }}
       >
         <h1 className="form__title">Edit Habit</h1>
