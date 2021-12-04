@@ -96,7 +96,7 @@ const Habit = ({ habitList, updateHabits }) => {
               return {
                 "data-tip": `${value.date.toISOString().slice(0, 10)}: ${
                   value.count
-                }`,
+                } ${habit.unit}`,
               };
             }}
             showWeekdayLabels={true}
