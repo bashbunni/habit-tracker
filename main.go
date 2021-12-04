@@ -7,14 +7,27 @@ import (
 )
 
 func main() {
-
+	/*
+		mysql := NewMySQLConnection()
+		sample := Habit{2, "hydration", "litres", false, "I want to be more hydrated"}
+		sampleJson, err := json.Marshal(sample)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("%s", sampleJson)
+		err = mysql.EditHabitFromJSON(sampleJson)
+		if err != nil {
+			log.Fatal(err)
+		}
+	*/
 	app := wails.CreateApp(&wails.AppConfig{
 		Width:  1024,
 		Height: 768,
 		Title:  "habit_tracker",
 		Colour: "#131313",
 	})
-	app.Bind(NewHabits())
+	app.Bind(NewMySQLConnection())
 	app.Bind(NewHabit)
+	app.Bind(JSONToHabit)
 	app.Run()
 }

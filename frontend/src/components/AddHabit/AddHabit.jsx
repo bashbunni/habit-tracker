@@ -10,10 +10,11 @@ const AddHabit = ({ updateHabits }) => {
     window.backend
       .NewHabit(habit.id, habit.name, habit.unit, habit.pomodoro, habit.why)
       .then((response) => {
-        window.backend.Habits.AddHabit(JSON.stringify(response));
-        updateHabits();
-        history.push(`/`);
+        console.log(typeof response);
+        window.backend.MySQLHabitRepository.AddHabitFromJSON(JSON.stringify(response));
       });
+    updateHabits();
+    history.push(`/`);
   };
 
   return (
