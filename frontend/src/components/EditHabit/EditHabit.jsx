@@ -16,9 +16,13 @@ const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
   const EditHabit = () => {
     window.backend.MySQLHabitRepository.EditHabitFromJSON(
       JSON.stringify(tempHabit)
-    ).catch((err) => {
-      updateHabits();
-    });
+    )
+      .then(() => {
+        updateHabits();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
 
     setEditOpen(false);
   };
