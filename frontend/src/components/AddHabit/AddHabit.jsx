@@ -36,7 +36,6 @@ const AddHabit = ({ updateHabits }) => {
           id="name"
           type="text"
           placeholder="yoga"
-          value={habit.name}
           onChange={(e) => setHabit({ ...habit, name: e.target.value })}
         />
         <label className="form__label" htmlFor="unit">
@@ -48,7 +47,6 @@ const AddHabit = ({ updateHabits }) => {
           id="unit"
           type="text"
           placeholder="hours"
-          value={habit.unit}
           onChange={(e) => setHabit({ ...habit, unit: e.target.value })}
         />
         <label className="form__label" htmlFor="why">
@@ -60,7 +58,6 @@ const AddHabit = ({ updateHabits }) => {
           id="why"
           type="text"
           placeholder="I want to do yoga because..."
-          value={habit.why}
           onChange={(e) => setHabit({ ...habit, why: e.target.value })}
         />
         <div className="form__btn-container">

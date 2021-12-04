@@ -39,18 +39,14 @@ const Habit = ({ habitList, updateHabits }) => {
     <>
       {habit && (
         <div className="habit">
-          {addOpen && (
-            <AddActivity
-              unit={habit.unit}
-              setAddOpen={setAddOpen}
-            />
-          )}
+          {addOpen && <AddActivity unit={habit.unit} setAddOpen={setAddOpen} />}
           {editOpen && (
             <EditHabit
               habit={habit}
               setHabit={setHabit}
               setEditOpen={setEditOpen}
               updateHabits={updateHabits}
+              habitList={habitList}
             />
           )}
           <div className="habit__header">
