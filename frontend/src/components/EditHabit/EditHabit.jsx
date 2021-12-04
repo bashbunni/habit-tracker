@@ -3,7 +3,13 @@ import { useHistory } from "react-router-dom";
 import close from "../../assets/icons/remove.svg";
 import "./EditHabit.scss";
 
-const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
+const EditHabit = ({
+  habit,
+  setHabit,
+  setEditOpen,
+  updateHabits,
+  habitList,
+}) => {
   const [tempHabit, setTempHabit] = useState(habit);
   const history = useHistory();
 
@@ -27,7 +33,18 @@ const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
     setEditOpen(false);
   };
 
-  // TODO: edit habit on DB
+  const isValidName = () => {
+    let exists = habitList.filter((habit) => habit.name === tempHabit.name);
+    return tempHabit.name && exists.length === 1;
+  };
+
+  const isValidForm = () => {
+    if (isValidName() && tempHabit.unit && tempHabit.why) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <div className="edit-habit">
       <img
@@ -56,7 +73,9 @@ const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
           habit name
         </label>
         <input
-          className="form__input"
+          className={
+            isValidName() ? "form__input" : "form__input form__input--error"
+          }
           name="name"
           id="name"
           type="text"
@@ -68,7 +87,9 @@ const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
           unit of measure
         </label>
         <input
-          className="form__input"
+          className={
+            tempHabit.unit ? "form__input" : "form__input form__input--error"
+          }
           name="unit"
           id="unit"
           type="text"
@@ -80,7 +101,9 @@ const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
           why
         </label>
         <input
-          className="form__input"
+          className={
+            tempHabit.why ? "form__input" : "form__input form__input--error"
+          }
           name="why"
           id="why"
           type="text"
@@ -89,8 +112,12 @@ const EditHabit = ({ habit, setHabit, setEditOpen, updateHabits }) => {
           onChange={(e) => setTempHabit({ ...tempHabit, why: e.target.value })}
         />
         <div className="form__btn-container">
-          <button className="form__btn" type="submit">
-            save
+          <button
+            className={isValidForm() ? "form__btn" : "form__btn form__btn--error"}
+            type="submit"
+            disabled={!isValidForm()}
+          >
+            {isValidForm() ? "save" : "invalid form"}
           </button>
           <button
             className="form__btn form__btn--reset"
