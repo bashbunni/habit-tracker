@@ -89,9 +89,38 @@
 
 rect {
   rx: 1px;
+  animation: load 0.5s;
+  &:hover {
+    animation: ripple 0.5s;
+  }
 }
 
-// counts
+/* *****************
+ * habit animations
+ * *****************/
+
+@keyframes ripple {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.8);
+  }
+}
+
+@keyframes load {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* ***********************
+ * colours based on count
+ * ***********************/
+
 .react-calendar-heatmap .color-github-0 {
   fill: #eeeeee;
 }
