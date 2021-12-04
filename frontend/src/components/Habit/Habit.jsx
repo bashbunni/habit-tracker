@@ -16,10 +16,18 @@ const Habit = ({ habitList, updateHabits }) => {
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [habit, setHabit] = useState({});
+  const [dates, setDates] = useState([]);
 
   useEffect(() => {
     setHabit(habitList[0]);
   }, [habitList]);
+
+  // runs on start and when habit updates
+  useEffect(() => {
+    if (habit && habit.id) {
+      getDates();
+    }
+  }, [habit]);
 
   useEffect(() => {
     const myHabit = habitList.find((habit) => habit.name === url);
@@ -27,6 +35,13 @@ const Habit = ({ habitList, updateHabits }) => {
       setHabit(myHabit);
     }
   }, [url, habitList]);
+
+  const getDates = () => {
+    console.log(habit.id);
+    window.backend.MySQLRepository.GetAllDates(habit.id).then((response) => {
+      setDates(response);
+    });
+  };
 
   // helpers
   const randomValues = getRange(364).map((index) => {
