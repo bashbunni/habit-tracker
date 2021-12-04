@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { isValidName, isValidForm } from "../../validation.js";
 import close from "../../assets/icons/remove.svg";
 import "./EditHabit.scss";
 
@@ -33,18 +34,6 @@ const EditHabit = ({
     setEditOpen(false);
   };
 
-  const isValidName = () => {
-    let exists = habitList.filter((habit) => habit.name === tempHabit.name);
-    return tempHabit.name && exists.length === 1;
-  };
-
-  const isValidForm = () => {
-    if (isValidName() && tempHabit.unit && tempHabit.why) {
-      return true;
-    }
-    return false;
-  };
-
   return (
     <div className="edit-habit">
       <img
@@ -74,7 +63,9 @@ const EditHabit = ({
         </label>
         <input
           className={
-            isValidName() ? "form__input" : "form__input form__input--error"
+            isValidName(tempHabit.name, habitList)
+              ? "form__input"
+              : "form__input form__input--error"
           }
           name="name"
           id="name"
@@ -112,13 +103,19 @@ const EditHabit = ({
           onChange={(e) => setTempHabit({ ...tempHabit, why: e.target.value })}
         />
         <div className="form__btn-container">
-          <button
-            className={isValidForm() ? "form__btn" : "form__btn form__btn--error"}
-            type="submit"
-            disabled={!isValidForm()}
-          >
-            {isValidForm() ? "save" : "invalid form"}
-          </button>
+          {isValidForm(habit, habitList) ? (
+            <button className="form__btn" type="submit">
+              save
+            </button>
+          ) : (
+            <button
+              className="form__btn form__btn--error"
+              type="submit"
+              disabled={true}
+            >
+              invalid form
+            </button>
+          )}
           <button
             className="form__btn form__btn--reset"
             onClick={(e) => {

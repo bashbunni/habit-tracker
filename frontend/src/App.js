@@ -49,6 +49,7 @@ const App = () => {
                 render={(props) => (
                   <AddHabit
                     updateHabits={updateHabits}
+                    habitList={habitList}
                   />
                 )}
               />
