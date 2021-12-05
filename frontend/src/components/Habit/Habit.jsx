@@ -36,20 +36,21 @@ const Habit = ({ habitList, updateHabits }) => {
     }
   }, [url, habitList]);
 
+  const defaultValues = getRange(364).map((index) => {
+    return {
+      date: shiftDate(today, -index),
+      count: 0,
+    };
+  });
+
   const getDates = () => {
     console.log(habit.id);
     window.backend.MySQLRepository.GetAllDates(habit.id).then((response) => {
-      setDates(response);
+      Array.prototype.push.apply(defaultValues, response);
+      setDates(defaultValues);
     });
   };
 
-  // helpers
-  const randomValues = getRange(364).map((index) => {
-    return {
-      date: shiftDate(today, -index),
-      count: getRandomInt(0, 3),
-    };
-  });
   return (
     <>
       {habit && (
@@ -97,25 +98,26 @@ const Habit = ({ habitList, updateHabits }) => {
               </div>
             </div>
           </div>
-          <CalendarHeatmap
-            startDate={shiftDate(today, -364)}
-            endDate={today}
-            values={randomValues}
-            classForValue={(value) => {
-              if (!value) {
-                return "color-empty";
-              }
-              return `color-github-${value.count}`;
-            }}
-            tooltipDataAttrs={(value) => {
-              return {
-                "data-tip": `${value.date.toISOString().slice(0, 10)}: ${
-                  value.count
-                } ${habit.unit}`,
-              };
-            }}
-            showWeekdayLabels={true}
-          />
+          {dates && (
+            <CalendarHeatmap
+              startDate={shiftDate(today, -364)}
+              endDate={today}
+              values={dates}
+              classForValue={(value) => {
+                console.log(dates);
+                if (!value) {
+                  return "color-empty";
+                }
+                return `color-github-${value.Count}`;
+              }}
+              tooltipDataAttrs={(value) => {
+                return {
+                  "data-tip": `${value.ID}: ${value.Count} ${habit.unit}`,
+                };
+              }}
+              showWeekdayLabels={true}
+            />
+          )}
           <ReactTooltip />
           <Pomodoro />
         </div>

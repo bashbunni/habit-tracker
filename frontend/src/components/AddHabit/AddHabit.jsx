@@ -12,7 +12,7 @@ const AddHabit = ({ updateHabits, habitList }) => {
       .NewHabit(habit.id, habit.name, habit.unit, habit.pomodoro, habit.why)
       .then((response) => {
         console.log(typeof response);
-        window.backend.MySQLHabitRepository.AddHabitFromJSON(
+        window.backend.MySQLRepository.AddHabitFromJSON(
           JSON.stringify(response)
         );
       });

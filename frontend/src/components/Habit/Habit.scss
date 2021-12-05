@@ -90,23 +90,11 @@
 rect {
   rx: 1px;
   animation: load 0.5s;
-  &:hover {
-    animation: ripple 0.5s;
-  }
 }
 
 /* *****************
  * habit animations
  * *****************/
-
-@keyframes ripple {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(0.8);
-  }
-}
 
 @keyframes load {
   from {
