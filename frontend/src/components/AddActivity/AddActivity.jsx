@@ -4,13 +4,18 @@ import "./AddActivity.scss";
 import close from "../../assets/icons/remove.svg";
 import "./AddActivity.scss";
 
-const AddActivity = ({ unit, setAddOpen }) => {
+const AddActivity = ({ habit_id, unit, setAddOpen }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let today = new Date().toISOString().slice(0, 10);
-    console.log(today);
-    console.log(e.target.count.value);
-    // TODO: window.backend.AddCount(today, e.target.count.value)
+    window.backend
+      .NewDate(today, Number(e.target.count.value), habit_id)
+      .then((response) => {
+        console.log(response);
+        window.backend.MySQLRepository.AddCountFromJSON(
+          JSON.stringify(response)
+        );
+      });
   };
 
   return (

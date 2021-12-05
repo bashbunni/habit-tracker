@@ -55,7 +55,7 @@ const Habit = ({ habitList, updateHabits }) => {
     <>
       {habit && (
         <div className="habit">
-          {addOpen && <AddActivity unit={habit.unit} setAddOpen={setAddOpen} />}
+          {addOpen && <AddActivity habit_id={habit.id} unit={habit.unit} setAddOpen={setAddOpen} />}
           {editOpen && (
             <EditHabit
               habit={habit}
@@ -104,7 +104,6 @@ const Habit = ({ habitList, updateHabits }) => {
               endDate={today}
               values={dates}
               classForValue={(value) => {
-                console.log(dates);
                 if (!value) {
                   return "color-empty";
                 }
