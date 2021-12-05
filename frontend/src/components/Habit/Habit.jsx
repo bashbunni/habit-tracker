@@ -108,11 +108,11 @@ const Habit = ({ habitList, updateHabits }) => {
                 if (!value) {
                   return "color-empty";
                 }
-                return `color-github-${value.Count}`;
+                return `color-github-${value.count}`;
               }}
               tooltipDataAttrs={(value) => {
                 return {
-                  "data-tip": `${value.ID}: ${value.Count} ${habit.unit}`,
+                  "data-tip": `${value.date}: ${value.count} ${habit.unit}`,
                 };
               }}
               showWeekdayLabels={true}
@@ -129,7 +129,7 @@ const Habit = ({ habitList, updateHabits }) => {
 function shiftDate(date, numDays) {
   const newDate = new Date(date);
   newDate.setDate(newDate.getDate() + numDays);
-  return newDate;
+  return newDate.toISOString().substring(0, 10);
 }
 
 function getRange(count) {
