@@ -1,6 +1,6 @@
 const isValidName = (name, habitList) => {
   let exists = habitList.filter((habit) => habit.name === name);
-  return name && exists.length === 1;
+  return name && exists.length <= 1;
 };
 
 const isValidForm = (habit, habitList) => {
