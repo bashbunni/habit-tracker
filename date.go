@@ -7,7 +7,8 @@ import (
 )
 
 type Date struct {
-	ID      string `json:"date"`
+	ID      string `json:"id"`
+	Date    string `json:"date"`
 	Count   uint   `json:"count"`
 	HabitID uint   `json:"habit_id"`
 }
@@ -22,6 +23,6 @@ func NewDateFromJSON(req []byte) Date {
 	return date
 }
 
-func NewDate(ID string, Count uint, HabitID uint) Date {
-	return Date{ID: ID, Count: Count, HabitID: HabitID}
+func NewDate(Today string, Count uint, HabitID uint) Date {
+	return Date{Date: Today, Count: Count, HabitID: HabitID}
 }
