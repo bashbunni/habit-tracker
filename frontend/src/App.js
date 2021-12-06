@@ -15,7 +15,7 @@ const App = () => {
   const mountedRef = useRef(true);
 
   function updateHabits() {
-    window.backend.MySQLHabitRepository.GetAllHabits().then((response) => {
+    window.backend.MySQLRepository.GetAllHabits().then((response) => {
       setHabitList(response);
     });
   }
@@ -38,18 +38,17 @@ const App = () => {
             onClick={openNav}
           />
           <Router>
+            {navModal ? (
+              <Modal closeModal={closeNav} habitList={habitList} />
+            ) : null}
+
             <Switch>
-              {navModal ? (
-                <Modal closeModal={closeNav} habitList={habitList} />
-              ) : null}
               <Route path="/pomodoro" exact component={Pomodoro} />
               <Route
                 path="/new"
                 exact
                 render={(props) => (
-                  <AddHabit
-                    updateHabits={updateHabits}
-                  />
+                  <AddHabit updateHabits={updateHabits} habitList={habitList} />
                 )}
               />
               <Route

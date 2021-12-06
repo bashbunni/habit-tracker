@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { isValidName, isValidForm } from "../../validation.js";
 import "./AddHabit.scss";
 
-const AddHabit = ({ updateHabits }) => {
+const AddHabit = ({ updateHabits, habitList }) => {
   const [habit, setHabit] = useState({});
   const history = useHistory();
 
@@ -11,7 +12,9 @@ const AddHabit = ({ updateHabits }) => {
       .NewHabit(habit.id, habit.name, habit.unit, habit.pomodoro, habit.why)
       .then((response) => {
         console.log(typeof response);
-        window.backend.MySQLHabitRepository.AddHabitFromJSON(JSON.stringify(response));
+        window.backend.MySQLRepository.AddHabitFromJSON(
+          JSON.stringify(response)
+        );
       });
     updateHabits();
     history.push(`/`);
@@ -31,44 +34,59 @@ const AddHabit = ({ updateHabits }) => {
           habit name
         </label>
         <input
-          className="form__input"
+          className={
+            isValidName(habit.name, habitList)
+              ? "form__input"
+              : "form__input form__input--error"
+          }
           name="name"
           id="name"
           type="text"
           placeholder="yoga"
-          value={habit.name}
           onChange={(e) => setHabit({ ...habit, name: e.target.value })}
         />
         <label className="form__label" htmlFor="unit">
           unit of measure
         </label>
         <input
-          className="form__input"
+          className={
+            habit.unit ? "form__input" : "form__input form__input--error"
+          }
           name="unit"
           id="unit"
           type="text"
           placeholder="hours"
-          value={habit.unit}
           onChange={(e) => setHabit({ ...habit, unit: e.target.value })}
         />
         <label className="form__label" htmlFor="why">
           why
         </label>
         <input
-          className="form__input"
+          className={
+            habit.why ? "form__input" : "form__input form__input--error"
+          }
           name="why"
           id="why"
           type="text"
           placeholder="I want to do yoga because..."
-          value={habit.why}
           onChange={(e) => setHabit({ ...habit, why: e.target.value })}
         />
         <div className="form__btn-container">
-          <button className="form__btn" type="submit">
-            save
-          </button>
+          {isValidForm(habit, habitList) ? (
+            <button className="form__btn" type="submit">
+              save
+            </button>
+          ) : (
+            <button
+              className="form__btn form__btn--error"
+              type="submit"
+              disabled={true}
+            >
+              invalid form
+            </button>
+          )}
           <button
-            className="form__btn--reset"
+            className="form__btn form__btn--reset"
             onClick={() => history.push("/")}
           >
             cancel

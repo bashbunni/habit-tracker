@@ -16,17 +16,17 @@ type HabitRepository interface {
 
 // TODO: check types work with frontend to return useful things; might need to make them pointers
 
-type MySQLHabitRepository struct {
+type MySQLRepository struct {
 	DB *sql.DB
 }
 
-func NewMySQLConnection() *MySQLHabitRepository {
-	s := MySQLHabitRepository{DB: DBConnect()}
+func NewMySQLConnection() *MySQLRepository {
+	s := MySQLRepository{DB: DBConnect()}
 	return &s
 }
 
 // GetHabits retrieves the list of Habits.
-func (s MySQLHabitRepository) GetAllHabits() []Habit {
+func (s MySQLRepository) GetAllHabits() []Habit {
 	results, err := s.DB.Query("SELECT * FROM habit")
 	if err != nil {
 		log.Fatal(err)
@@ -45,7 +45,7 @@ func (s MySQLHabitRepository) GetAllHabits() []Habit {
 }
 
 // GetHabit gets a habit with the given ID.
-func (s MySQLHabitRepository) GetHabit(id uint) Habit {
+func (s MySQLRepository) GetHabit(id uint) Habit {
 	var result Habit
 	err := s.DB.QueryRow("SELECT * FROM habit WHERE habit_id = ?", id).Scan(&result.ID, &result.Name, &result.Unit, &result.Pomodoro, &result.Why)
 	if err != nil {
@@ -55,12 +55,12 @@ func (s MySQLHabitRepository) GetHabit(id uint) Habit {
 
 }
 
-func (s *MySQLHabitRepository) AddHabitFromJSON(req []byte) error {
+func (s *MySQLRepository) AddHabitFromJSON(req []byte) error {
 	return s.AddHabit(JSONToHabit(req))
 }
 
 // AddHabit add a new habit to the database
-func (s MySQLHabitRepository) AddHabit(habit Habit) error {
+func (s MySQLRepository) AddHabit(habit Habit) error {
 	fmt.Println(habit)
 
 	insert := fmt.Sprintf("INSERT INTO habit(habit_id, habit_name, habit_unit, habit_pomodoro, habit_why) VALUES ('%d', '%s', '%s', '%v', '%s')", habit.ID, habit.Name, habit.Unit, habit.Pomodoro, habit.Why)
@@ -68,16 +68,16 @@ func (s MySQLHabitRepository) AddHabit(habit Habit) error {
 	return err
 }
 
-func (s MySQLHabitRepository) EditHabitFromJSON(req []byte) error {
+func (s MySQLRepository) EditHabitFromJSON(req []byte) error {
 	return s.EditHabit(JSONToHabit(req))
 }
 
-func (s MySQLHabitRepository) EditHabit(habit Habit) error {
+func (s MySQLRepository) EditHabit(habit Habit) error {
 	_, err := s.DB.Exec("UPDATE habit SET habit_id = ?, habit_name = ?, habit_unit = ?, habit_pomodoro = ?, habit_why = ? WHERE habit_id = ?", habit.ID, habit.Name, habit.Unit, habit.Pomodoro, habit.Why, habit.ID)
 	return err
 }
 
-func (s MySQLHabitRepository) DeleteHabit(id uint) bool {
+func (s MySQLRepository) DeleteHabit(id uint) bool {
 	_, err := s.DB.Exec("DELETE FROM habit WHERE habit_id = ?", id)
 	if err != nil {
 		log.Fatal(err)

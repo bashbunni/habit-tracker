@@ -8,18 +8,39 @@ import EditHabit from "../EditHabit";
 import Pomodoro from "../Pomodoro";
 import "./Habit.scss";
 
-const today = new Date();
+const today = new Date().toISOString().substring(0, 10);
 
 const Habit = ({ habitList, updateHabits }) => {
   const url = window.location.pathname.split("/").pop();
-  // state
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [habit, setHabit] = useState({});
+  const [dates, setDates] = useState([]);
+
+  const defaultValues = getRange(364).map((index) => {
+    return {
+      date: shiftDate(today, -index),
+      count: 0,
+    };
+  });
+
+  const getDates = () => {
+    window.backend.MySQLRepository.GetAllDates(habit.id).then((response) => {
+      Array.prototype.push.apply(defaultValues, response);
+      setDates(defaultValues);
+    });
+  };
 
   useEffect(() => {
     setHabit(habitList[0]);
   }, [habitList]);
+
+  // runs on start and when habit updates
+  useEffect(() => {
+    if (habit && habit.id) {
+      getDates();
+    }
+  }, [habit]);
 
   useEffect(() => {
     const myHabit = habitList.find((habit) => habit.name === url);
@@ -28,19 +49,13 @@ const Habit = ({ habitList, updateHabits }) => {
     }
   }, [url, habitList]);
 
-  // helpers
-  const randomValues = getRange(364).map((index) => {
-    return {
-      date: shiftDate(today, -index),
-      count: getRandomInt(0, 3),
-    };
-  });
   return (
     <>
       {habit && (
         <div className="habit">
           {addOpen && (
             <AddActivity
+              habit_id={habit.id}
               unit={habit.unit}
               setAddOpen={setAddOpen}
             />
@@ -51,6 +66,7 @@ const Habit = ({ habitList, updateHabits }) => {
               setHabit={setHabit}
               setEditOpen={setEditOpen}
               updateHabits={updateHabits}
+              habitList={habitList}
             />
           )}
           <div className="habit__header">
@@ -86,25 +102,25 @@ const Habit = ({ habitList, updateHabits }) => {
               </div>
             </div>
           </div>
-          <CalendarHeatmap
-            startDate={shiftDate(today, -364)}
-            endDate={today}
-            values={randomValues}
-            classForValue={(value) => {
-              if (!value) {
-                return "color-empty";
-              }
-              return `color-github-${value.count}`;
-            }}
-            tooltipDataAttrs={(value) => {
-              return {
-                "data-tip": `${value.date.toISOString().slice(0, 10)}: ${
-                  value.count
-                }`,
-              };
-            }}
-            showWeekdayLabels={true}
-          />
+          {dates && (
+            <CalendarHeatmap
+              startDate={shiftDate(today, -363)}
+              endDate={today}
+              values={dates}
+              classForValue={(value) => {
+                if (!value) {
+                  return "color-empty";
+                }
+                return `color-github-${value.count}`;
+              }}
+              tooltipDataAttrs={(value) => {
+                return {
+                  "data-tip": `${value.date}: ${value.count} ${habit.unit}`,
+                };
+              }}
+              showWeekdayLabels={true}
+            />
+          )}
           <ReactTooltip />
           <Pomodoro />
         </div>
@@ -116,7 +132,7 @@ const Habit = ({ habitList, updateHabits }) => {
 function shiftDate(date, numDays) {
   const newDate = new Date(date);
   newDate.setDate(newDate.getDate() + numDays);
-  return newDate;
+  return newDate.toISOString().substring(0, 10);
 }
 
 function getRange(count) {
