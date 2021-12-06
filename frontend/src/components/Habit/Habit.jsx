@@ -12,7 +12,6 @@ const today = new Date().toISOString().substring(0, 10);
 
 const Habit = ({ habitList, updateHabits }) => {
   const url = window.location.pathname.split("/").pop();
-  // state
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [habit, setHabit] = useState({});
@@ -44,7 +43,6 @@ const Habit = ({ habitList, updateHabits }) => {
   });
 
   const getDates = () => {
-    console.log(habit.id);
     window.backend.MySQLRepository.GetAllDates(habit.id).then((response) => {
       Array.prototype.push.apply(defaultValues, response);
       setDates(defaultValues);
