@@ -14,7 +14,9 @@ const AddActivity = ({ habit_id, unit, setAddOpen }) => {
         console.log(response);
         window.backend.MySQLRepository.AddCountFromJSON(
           JSON.stringify(response)
-        );
+        ).catch((err) => {
+          console.error(err);
+        });
       });
   };
 

@@ -8,7 +8,7 @@ import EditHabit from "../EditHabit";
 import Pomodoro from "../Pomodoro";
 import "./Habit.scss";
 
-const today = new Date();
+const today = new Date().toISOString().substring(0, 10);
 
 const Habit = ({ habitList, updateHabits }) => {
   const url = window.location.pathname.split("/").pop();
@@ -55,7 +55,13 @@ const Habit = ({ habitList, updateHabits }) => {
     <>
       {habit && (
         <div className="habit">
-          {addOpen && <AddActivity habit_id={habit.id} unit={habit.unit} setAddOpen={setAddOpen} />}
+          {addOpen && (
+            <AddActivity
+              habit_id={habit.id}
+              unit={habit.unit}
+              setAddOpen={setAddOpen}
+            />
+          )}
           {editOpen && (
             <EditHabit
               habit={habit}
@@ -100,7 +106,7 @@ const Habit = ({ habitList, updateHabits }) => {
           </div>
           {dates && (
             <CalendarHeatmap
-              startDate={shiftDate(today, -364)}
+              startDate={shiftDate(today, -363)}
               endDate={today}
               values={dates}
               classForValue={(value) => {

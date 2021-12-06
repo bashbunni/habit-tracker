@@ -9,13 +9,14 @@ import (
 func main() {
 	/*
 		mysql := NewMySQLConnection()
-		sample := Habit{2, "hydration", "litres", false, "I want to be more hydrated"}
+		fmt.Println(mysql.TodayExists())
+		sample := Date{"2021-12-04", 2, 1}
 		sampleJson, err := json.Marshal(sample)
 		if err != nil {
 			log.Fatal(err)
 		}
 		fmt.Printf("%s", sampleJson)
-		err = mysql.EditHabitFromJSON(sampleJson)
+		err = mysql.AddCountFromJSON(sampleJson)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -28,6 +29,7 @@ func main() {
 	})
 	app.Bind(NewMySQLConnection())
 	app.Bind(NewHabit)
+	app.Bind(NewDate)
 	app.Bind(JSONToHabit)
 	app.Run()
 }
