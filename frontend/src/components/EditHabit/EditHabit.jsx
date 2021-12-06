@@ -49,7 +49,6 @@ const EditHabit = ({
         onSubmit={(e) => {
           e.preventDefault();
           EditHabit();
-          // TODO: can I remove this setHabit? seems to be needed for current render...
           setHabit({
             name: tempHabit.name,
             unit: tempHabit.unit,
@@ -103,7 +102,7 @@ const EditHabit = ({
           onChange={(e) => setTempHabit({ ...tempHabit, why: e.target.value })}
         />
         <div className="form__btn-container">
-          {isValidForm(habit, habitList) ? (
+          {isValidForm(tempHabit, habitList) ? (
             <button className="form__btn" type="submit">
               save
             </button>

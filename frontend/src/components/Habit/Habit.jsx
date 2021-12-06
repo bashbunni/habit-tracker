@@ -17,6 +17,20 @@ const Habit = ({ habitList, updateHabits }) => {
   const [habit, setHabit] = useState({});
   const [dates, setDates] = useState([]);
 
+  const defaultValues = getRange(364).map((index) => {
+    return {
+      date: shiftDate(today, -index),
+      count: 0,
+    };
+  });
+
+  const getDates = () => {
+    window.backend.MySQLRepository.GetAllDates(habit.id).then((response) => {
+      Array.prototype.push.apply(defaultValues, response);
+      setDates(defaultValues);
+    });
+  };
+
   useEffect(() => {
     setHabit(habitList[0]);
   }, [habitList]);
@@ -34,20 +48,6 @@ const Habit = ({ habitList, updateHabits }) => {
       setHabit(myHabit);
     }
   }, [url, habitList]);
-
-  const defaultValues = getRange(364).map((index) => {
-    return {
-      date: shiftDate(today, -index),
-      count: 0,
-    };
-  });
-
-  const getDates = () => {
-    window.backend.MySQLRepository.GetAllDates(habit.id).then((response) => {
-      Array.prototype.push.apply(defaultValues, response);
-      setDates(defaultValues);
-    });
-  };
 
   return (
     <>
