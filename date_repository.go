@@ -33,7 +33,7 @@ func (s MySQLRepository) GetAllDates(habit_id uint) []Date {
 	return dates
 }
 
-// TODO: this should return an array of dates
+// GetTodaysCountForHabit gets a Date instance for today's entry on a given habit.
 func (s MySQLRepository) GetTodaysCountForHabit(habitID uint) Date {
 	today := time.Now().UTC().Format("2006-01-02")
 	var date Date
