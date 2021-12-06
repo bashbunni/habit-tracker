@@ -70,6 +70,9 @@ p {
     background-color: white;
     height: 40px;
     font-family: inherit;
+    &--error {
+      border: 1px solid $red;
+    }
   }
   &__btn {
     @include btn($light-green);
@@ -87,6 +90,14 @@ p {
     &--delete {
       @include btn($red);
     }
-
+    &--error {
+      border: none;
+      background-color: $red;
+      color: white;
+      &:hover {
+        background-color: $red;
+        cursor: not-allowed;
+      }
+    }
   }
 }

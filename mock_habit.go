@@ -17,8 +17,8 @@ func (m MockHabitRepository) GetAllHabits() []*Habit {
 }
 
 // Initialize mock database with sample data.
-func (m MockHabitRepository) NewHabits() *Habits {
-	return &Habits{habits: []*Habit{
+func (m MockHabitRepository) NewHabits() *MockHabitRepository {
+	return &MockHabitRepository{habits: []*Habit{
 		{ID: 1, Name: "yoga", Unit: "hours", Pomodoro: false, Why: "I want to do yoga so I can be more relaxed"},
 		{ID: 2, Name: "meditation", Unit: "15 minutes", Pomodoro: false, Why: "I want to meditate so I can be more present"},
 		{ID: 3, Name: "hydration", Unit: "litres", Pomodoro: false, Why: "I want to be hydrated so I can feel better"},
