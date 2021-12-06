@@ -12,6 +12,7 @@
   left: 0;
   min-width: $modal-width;
   background-color: $black;
+  z-index: 1;
   @include tablet {
     width: $modal-width;
   }
