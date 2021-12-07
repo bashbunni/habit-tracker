@@ -58,6 +58,7 @@ const Habit = ({ habitList, updateHabits }) => {
               habit_id={habit.id}
               unit={habit.unit}
               setAddOpen={setAddOpen}
+              getDates={getDates}
             />
           )}
           {editOpen && (
