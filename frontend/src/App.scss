@@ -93,8 +93,11 @@ p {
     }
     &--error {
       border: none;
-      background-color: $red;
+      background-color: $grey;
       color: white;
+      @include tablet {
+        max-width: 200px;
+      }
       &:hover {
         background-color: $red;
         cursor: not-allowed;
