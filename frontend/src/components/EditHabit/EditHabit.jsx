@@ -15,13 +15,13 @@ const EditHabit = ({
   const history = useHistory();
 
   const deleteHabit = () => {
-    window.backend.MySQLHabitRepository.DeleteHabit(habit.id);
+    window.go.MySQLHabitRepository.DeleteHabit(habit.id);
     updateHabits();
     history.push("/");
   };
 
   const EditHabit = () => {
-    window.backend.MySQLHabitRepository.EditHabitFromJSON(
+    window.go.MySQLHabitRepository.EditHabitFromJSON(
       JSON.stringify(tempHabit)
     )
       .then(() => {

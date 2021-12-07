@@ -8,11 +8,11 @@ const AddHabit = ({ updateHabits, habitList }) => {
   const history = useHistory();
 
   const addHabit = () => {
-    window.backend
+    window.go
       .NewHabit(habit.id, habit.name, habit.unit, habit.pomodoro, habit.why)
       .then((response) => {
         console.log(typeof response);
-        window.backend.MySQLRepository.AddHabitFromJSON(
+        window.go.MySQLRepository.AddHabitFromJSON(
           JSON.stringify(response)
         );
       });

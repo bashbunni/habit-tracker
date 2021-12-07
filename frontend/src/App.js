@@ -15,7 +15,7 @@ const App = () => {
   const mountedRef = useRef(true);
 
   function updateHabits() {
-    window.backend.MySQLRepository.GetAllHabits().then((response) => {
+    window.go.MySQLRepository.GetAllHabits().then((response) => {
       setHabitList(response);
     });
   }

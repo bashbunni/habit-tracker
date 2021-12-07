@@ -8,11 +8,11 @@ const AddActivity = ({ habit_id, unit, setAddOpen }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let today = new Date().toISOString().slice(0, 10);
-    window.backend
+    window.go
       .NewDate(today, Number(e.target.count.value), habit_id)
       .then((response) => {
         console.log(response);
-        window.backend.MySQLRepository.AddCountFromJSON(
+        window.go.MySQLRepository.AddCountFromJSON(
           JSON.stringify(response)
         ).catch((err) => {
           console.error(err);
