@@ -4,7 +4,7 @@ import "./AddActivity.scss";
 import close from "../../assets/icons/remove.svg";
 import "./AddActivity.scss";
 
-const AddActivity = ({ habit_id, unit, setAddOpen }) => {
+const AddActivity = ({ habit_id, unit, setAddOpen, getDates }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let today = new Date().toISOString().slice(0, 10);
@@ -14,9 +14,14 @@ const AddActivity = ({ habit_id, unit, setAddOpen }) => {
         console.log(response);
         window.backend.MySQLRepository.AddCountFromJSON(
           JSON.stringify(response)
-        ).catch((err) => {
-          console.error(err);
-        });
+        )
+          .then(() => {
+            getDates();
+            setAddOpen(false);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       });
   };
 
