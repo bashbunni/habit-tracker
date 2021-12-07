@@ -14,8 +14,6 @@ type HabitRepository interface {
 	DeleteHabit(uint) bool
 }
 
-// TODO: check types work with frontend to return useful things; might need to make them pointers
-
 type MySQLRepository struct {
 	DB *sql.DB
 }
@@ -52,9 +50,9 @@ func (s MySQLRepository) GetHabit(id uint) Habit {
 		log.Fatal(err)
 	}
 	return result
-
 }
 
+// AddHabitFromJSON adds a habit given a JSON value of a habit object
 func (s *MySQLRepository) AddHabitFromJSON(req []byte) error {
 	return s.AddHabit(JSONToHabit(req))
 }

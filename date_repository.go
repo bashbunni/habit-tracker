@@ -33,7 +33,7 @@ func (s MySQLRepository) GetAllDates(habit_id uint) []Date {
 	return dates
 }
 
-// TODO: this should return an array of dates
+// GetTodaysCountForHabit gets a Date instance for today's entry on a given habit.
 func (s MySQLRepository) GetTodaysCountForHabit(habitID uint) Date {
 	today := time.Now().UTC().Format("2006-01-02")
 	var date Date
@@ -65,9 +65,9 @@ func (s MySQLRepository) AddDate(date Date) error {
 }
 
 func (s MySQLRepository) AddCount(date Date) error {
-	fmt.Println(s.TodayExists(date.HabitID))
+	today := s.GetTodaysCountForHabit(date.HabitID)
 	if s.TodayExists(date.HabitID) {
-		updateCount := fmt.Sprintf("UPDATE date SET date_count = %d WHERE date_date = '%s' AND habit_id = %d", date.Count, date.Date, date.HabitID)
+		updateCount := fmt.Sprintf("UPDATE date SET date_count = %d WHERE date_date = '%s' AND habit_id = %d", today.Count+1, date.Date, date.HabitID)
 		_, err := s.DB.Exec(updateCount)
 		return err
 	} else {
