@@ -11,7 +11,7 @@ import (
 )
 
 func getEnvVariable(key string) string {
-	err := godotenv.Load(".env")
+	err := godotenv.Load()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -20,8 +20,8 @@ func getEnvVariable(key string) string {
 
 func DBConnect() (db *sql.DB) {
 	fmt.Println("Setup...")
-	dbUsername := getEnvVariable("USERNAME")
-	dbPassword := getEnvVariable("PASSWORD")
+	dbUsername := getEnvVariable("DB_USERNAME")
+	dbPassword := getEnvVariable("DB_PASSWORD")
 	dbHost := getEnvVariable("HOST")
 	dbPort := getEnvVariable("PORT")
 	dbName := getEnvVariable("DATABASE")
