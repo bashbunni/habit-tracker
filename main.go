@@ -26,6 +26,9 @@ func main() {
 	//go:embed frontend/public
 	var assets embed.FS
 
+	habit := &Habit{}
+	date := &Date{}
+
 	err := wails.Run(&options.App{
 		Width:  1024,
 		Height: 768,
@@ -33,8 +36,8 @@ func main() {
 		Assets: assets,
 		Bind: []interface{}{
 			NewMySQLConnection(),
-			NewHabit,
-			NewDate,
+			habit,
+			date,
 			JSONToHabit,
 		},
 	})
