@@ -1,9 +1,11 @@
 package main
 
 import (
+	"embed"
 	_ "embed"
 
-	"github.com/wailsapp/wails"
+	"github.com/wailsapp/wails/v2"
+	"github.com/wailsapp/wails/v2/pkg/options"
 )
 
 func main() {
@@ -21,15 +23,22 @@ func main() {
 			log.Fatal(err)
 		}
 	*/
-	app := wails.CreateApp(&wails.AppConfig{
+	//go:embed frontend/public
+	var assets embed.FS
+
+	err := wails.Run(&options.App{
 		Width:  1024,
 		Height: 768,
 		Title:  "habit_tracker",
-		Colour: "#131313",
+		Assets: assets,
+		Bind: []interface{}{
+			NewMySQLConnection(),
+			NewHabit,
+			NewDate,
+			JSONToHabit,
+		},
 	})
-	app.Bind(NewMySQLConnection())
-	app.Bind(NewHabit)
-	app.Bind(NewDate)
-	app.Bind(JSONToHabit)
-	app.Run()
+	if err != nil {
+		panic(err)
+	}
 }

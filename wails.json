@@ -1,0 +1,12 @@
+{
+  "name": "habit_tracker",
+  "description": "Enter your project description",
+  "outputfilename": "another_habit",
+  "wailsjsdir": "./frontend",
+  "author": {
+    "name": "bashbunni",
+    "email": "bashbunni.io@gmail.com"
+  },
+  "version": "0.1.0"
+}
+
