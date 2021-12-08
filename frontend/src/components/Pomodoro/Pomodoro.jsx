@@ -29,7 +29,7 @@ const Pomodoro = () => {
       <div className="pomodoro__bottom">
         <blockquote className="pomodoro__quote">
           <p>
-            "{quote.text}"<br />-{quote.author}
+            "{quote.text}"<br />-{quote.author ? quote.author : "unknown"}
           </p>
         </blockquote>
         <div className="pomodoro__buttons">

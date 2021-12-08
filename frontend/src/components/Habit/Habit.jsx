@@ -125,7 +125,9 @@ const Habit = ({ habitList, updateHabits }) => {
             />
           )}
           <ReactTooltip />
-          <Pomodoro />
+          <div className="pomodoro-box">
+            <Pomodoro />
+          </div>
         </div>
       )}
     </>
