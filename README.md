@@ -12,7 +12,6 @@ This allows you to track any habits you’d like and see how you’re progressin
 I hope that this tool can help those who struggle with being consistent or disciplined.
 
 ![habit page](https://user-images.githubusercontent.com/15822994/145179044-4c153162-075f-4842-9068-691660c6c2bd.png)
-![navigation menu](https://user-images.githubusercontent.com/15822994/145179071-fec54a58-9dfc-4280-badf-c8ce962aa8fa.png)
 ![log activity menu](https://user-images.githubusercontent.com/15822994/145179136-37aca325-ca19-42e0-83d9-2ea3e4498729.png)
 
 ## How to Run
@@ -78,6 +77,11 @@ Build out the pomodoro timer as outlined in feature request issue #10
 
 \*issues should include a clear description. For bugs this means including screenshots of related error messages and code snippets that you suspect are involved along with your OS, Go, Wails, Node versions.
 For feature requests, please include a description of the feature, with a user story outlining the problem-space it aims to solve.
+
+### Additional Information
+Here's an overview of the project structure:
+<img width="1168" alt="habit-tracker (2)" src="https://user-images.githubusercontent.com/15822994/145290719-315ed951-8e6f-489d-ba60-b7a790e13fd1.png">
+
 
 ## Next Steps
 
