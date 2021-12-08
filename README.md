@@ -85,7 +85,7 @@ For feature requests, please include a description of the feature, with a user s
 
 This includes
 
-- a timer component
+- a functional timer component
 - incrementing the count for a habit that has pomodoro enabled
 
 ![pomodoro page](https://user-images.githubusercontent.com/15822994/145179376-d87d1354-7497-4cef-90d0-ac7690438457.png)
