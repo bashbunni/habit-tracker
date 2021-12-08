@@ -1,4 +1,4 @@
-# Habit Tracker
+![habit-tracker](https://user-images.githubusercontent.com/15822994/145180371-3d0fe074-ffb2-468f-a2c3-0fbdbcd75c83.png)
 
 ![open issues](https://img.shields.io/github/issues/bashbunni/habit-tracker)
 ![forks](https://img.shields.io/github/forks/bashbunni/habit-tracker)
