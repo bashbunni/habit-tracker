@@ -38,29 +38,27 @@ const App = () => {
             onClick={openNav}
           />
           <Router>
-            {navModal ? (
-              <Modal closeModal={closeNav} habitList={habitList} />
-            ) : null}
+            {navModal && <Modal closeModal={closeNav} habitList={habitList} />}
 
             <Switch>
               <Route path="/pomodoro" exact component={Pomodoro} />
               <Route
                 path="/new"
                 exact
-                render={(props) => (
+                render={() => (
                   <AddHabit updateHabits={updateHabits} habitList={habitList} />
                 )}
               />
               <Route
                 path="/:name"
-                render={(props) => (
+                render={() => (
                   <Habit habitList={habitList} updateHabits={updateHabits} />
                 )}
               />
               <Route
                 path="/"
                 exact
-                render={(props) => (
+                render={() => (
                   <Habit habitList={habitList} updateHabits={updateHabits} />
                 )}
               />

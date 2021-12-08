@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
 import mockPomodoro from "../../assets/images/mock-pomodoro.png";
 import "./Pomodoro.scss";
 
 const Pomodoro = () => {
+  const [quote, setQuote] = useState({});
   const timeRemaining = "10 minutes 58 seconds";
-  const quote = {
-    text: "Logic will get you from A to Z; imagination will get you everywhere.",
-    author: "Albert Einstein",
-  };
+  let mountedRef = useRef(true);
+
+  useEffect(() => {
+    axios.get("https://type.fit/api/quotes").then(({ data }) => {
+      if (mountedRef.current) {
+        let random = Math.floor(Math.random() * data.length);
+        setQuote(data[random]);
+      }
+    });
+    return () => (mountedRef.current = false);
+  }, []);
 
   return (
     <div className="pomodoro">
