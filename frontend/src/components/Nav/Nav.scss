@@ -1,0 +1,42 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.sidebar {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  min-width: $modal-width;
+  background-color: $black;
+  z-index: 1;
+  @include tablet {
+    width: $modal-width;
+  }
+}
+
+.nav {
+  margin: 0;
+  &__item {
+    margin-bottom: 1rem;
+  }
+  &__link {
+    @include subtitle(white);
+    &--active {
+      @include subtitle($light-green);
+    }
+    &--pomodoro {
+      @include subtitle($blue);
+    }
+    &--add {
+      background: url("../../assets/icons/add.svg");
+      background-repeat: no-repeat;
+      background-size: 25px;
+      background-position: 0 12.5px;
+      padding-left: 35px;
+    }
+  }
+}
