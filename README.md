@@ -1,4 +1,4 @@
-# Habit Tracker
+![habit-tracker](https://user-images.githubusercontent.com/15822994/145180371-3d0fe074-ffb2-468f-a2c3-0fbdbcd75c83.png)
 
 ![open issues](https://img.shields.io/github/issues/bashbunni/habit-tracker)
 ![forks](https://img.shields.io/github/forks/bashbunni/habit-tracker)
@@ -10,6 +10,10 @@
 My project is a web and desktop application that allows you to track and visualize your consistency with your habits over time with a calendar heatmap.
 This allows you to track any habits you’d like and see how you’re progressing towards your goals.
 I hope that this tool can help those who struggle with being consistent or disciplined.
+
+![habit page](https://user-images.githubusercontent.com/15822994/145179044-4c153162-075f-4842-9068-691660c6c2bd.png)
+![navigation menu](https://user-images.githubusercontent.com/15822994/145179071-fec54a58-9dfc-4280-badf-c8ce962aa8fa.png)
+![log activity menu](https://user-images.githubusercontent.com/15822994/145179136-37aca325-ca19-42e0-83d9-2ea3e4498729.png)
 
 ## How to Run
 
@@ -81,8 +85,10 @@ For feature requests, please include a description of the feature, with a user s
 
 This includes
 
-- a timer component
+- a functional timer component
 - incrementing the count for a habit that has pomodoro enabled
+
+![pomodoro page](https://user-images.githubusercontent.com/15822994/145179376-d87d1354-7497-4cef-90d0-ac7690438457.png)
 
 ### Add Authentication
 
