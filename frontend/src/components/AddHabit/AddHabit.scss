@@ -3,5 +3,6 @@
 
 .add-habit {
   @include modal($light-green);
+  background-color: $background;
   border: none;
 }
