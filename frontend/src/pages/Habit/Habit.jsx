@@ -3,9 +3,9 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import ReactTooltip from "react-tooltip";
 import edit from "../../assets/icons/btn--edit.png";
 import add from "../../assets/icons/btn--add.png";
-import AddActivity from "../AddActivity";
-import EditHabit from "../EditHabit";
-import Pomodoro from "../Pomodoro";
+import AddActivity from "../../components/AddActivity";
+import EditHabit from "../../components/EditHabit";
+import Pomodoro from "../../components/Pomodoro";
 import "./Habit.scss";
 
 const today = new Date().toISOString().substring(0, 10);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav";
-import Habit from "./components/Habit";
+import Habit from "./pages/Habit";
 import Pomodoro from "./components/Pomodoro";
 import AddHabit from "./components/AddHabit";
 import hamburger from "./assets/icons/hamburger.svg";
