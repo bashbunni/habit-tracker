@@ -1,5 +1,6 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/animations" as *;
 
 .habit {
   &__header {
@@ -92,17 +93,13 @@ rect {
   animation: load 0.5s;
 }
 
-/* *****************
- * habit animations
- * *****************/
+/* ********
+ * tooltip
+ * ********/
 
-@keyframes load {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
+.__react_component_tooltip {
+    font-size: 1rem !important; 
+    // important is necessary here because the component uses inline styles
 }
 
 /* ***********************

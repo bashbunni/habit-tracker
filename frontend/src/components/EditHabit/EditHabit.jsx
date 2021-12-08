@@ -15,29 +15,27 @@ const EditHabit = ({
   const history = useHistory();
 
   const deleteHabit = () => {
-    window.backend.MySQLHabitRepository.DeleteHabit(habit.id);
+    window.backend.MySQLRepository.DeleteHabit(habit.id).catch((err) =>
+      console.error(err)
+    );
     updateHabits();
     history.push("/");
   };
 
   const EditHabit = () => {
-    window.backend.MySQLHabitRepository.EditHabitFromJSON(
-      JSON.stringify(tempHabit)
-    )
+    window.backend.MySQLRepository.EditHabitFromJSON(JSON.stringify(tempHabit))
       .then(() => {
         updateHabits();
+        history.push(`/${tempHabit.name}`);
+        setEditOpen(false);
       })
-      .catch((err) => {
-        console.error(err);
-      });
-
-    setEditOpen(false);
+      .catch((err) => console.error(err));
   };
 
   return (
     <div className="edit-habit">
       <img
-        className="edit-habit__close"
+        className="close"
         src={close}
         alt="close"
         onClick={() => {

@@ -1,7 +1,7 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.modal {
+.sidebar {
   margin: 0;
   width: 100%;
   height: 100%;
@@ -16,13 +16,10 @@
   @include tablet {
     width: $modal-width;
   }
-  &__close {
-    @include close;
-    margin: 1.5rem 1.5rem 150px 0;
-  }
-  &__list {
-    margin: 0;
-  }
+}
+
+.nav {
+  margin: 0;
   &__item {
     margin-bottom: 1rem;
   }

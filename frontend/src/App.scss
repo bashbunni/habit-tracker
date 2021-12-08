@@ -10,6 +10,7 @@ body {
   font-family: $font-family;
   background-color: $background;
   width: 100vw;
+  height: 100vh;
   color: white;
 }
 
@@ -92,12 +93,25 @@ p {
     }
     &--error {
       border: none;
-      background-color: $red;
+      background-color: $grey;
       color: white;
+      @include tablet {
+        max-width: 200px;
+      }
       &:hover {
         background-color: $red;
         cursor: not-allowed;
       }
     }
+  }
+}
+
+.close {
+  align-self: flex-end;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  &--nav {
+    margin: 1.5rem 1.5rem 150px 0;
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Modal from "./components/Modal";
-import Habit from "./components/Habit";
+import Nav from "./components/Nav";
+import Habit from "./pages/Habit";
 import Pomodoro from "./components/Pomodoro";
 import AddHabit from "./components/AddHabit";
 import hamburger from "./assets/icons/hamburger.svg";
@@ -9,9 +9,9 @@ import "./App.scss";
 
 const App = () => {
   const [habitList, setHabitList] = useState([]);
-  const [navModal, setNavModal] = useState(false);
-  const openNav = () => setNavModal(true);
-  const closeNav = () => setNavModal(false);
+  const [nav, setNav] = useState(false);
+  const openNav = () => setNav(true);
+  const closeNav = () => setNav(false);
   const mountedRef = useRef(true);
 
   function updateHabits() {
@@ -35,32 +35,30 @@ const App = () => {
             className="hamburger"
             src={hamburger}
             alt="open menu"
-            onClick={openNav}
+            onClick={nav ? closeNav : openNav}
           />
           <Router>
-            {navModal ? (
-              <Modal closeModal={closeNav} habitList={habitList} />
-            ) : null}
+            {nav && <Nav closeNav={closeNav} habitList={habitList} />}
 
             <Switch>
               <Route path="/pomodoro" exact component={Pomodoro} />
               <Route
                 path="/new"
                 exact
-                render={(props) => (
+                render={() => (
                   <AddHabit updateHabits={updateHabits} habitList={habitList} />
                 )}
               />
               <Route
                 path="/:name"
-                render={(props) => (
+                render={() => (
                   <Habit habitList={habitList} updateHabits={updateHabits} />
                 )}
               />
               <Route
                 path="/"
                 exact
-                render={(props) => (
+                render={() => (
                   <Habit habitList={habitList} updateHabits={updateHabits} />
                 )}
               />

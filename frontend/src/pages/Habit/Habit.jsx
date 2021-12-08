@@ -3,9 +3,9 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import ReactTooltip from "react-tooltip";
 import edit from "../../assets/icons/btn--edit.png";
 import add from "../../assets/icons/btn--add.png";
-import AddActivity from "../AddActivity";
-import EditHabit from "../EditHabit";
-import Pomodoro from "../Pomodoro";
+import AddActivity from "../../components/AddActivity";
+import EditHabit from "../../components/EditHabit";
+import Pomodoro from "../../components/Pomodoro";
 import "./Habit.scss";
 
 const today = new Date().toISOString().substring(0, 10);
@@ -99,7 +99,9 @@ const Habit = ({ habitList, updateHabits }) => {
               <div className="goal__list">
                 <p className="goal__choice">daily</p>
                 <p className="goal__choice">weekly</p>
-                <p className="goal__choice goal__choice--active">custom</p>
+                <p className="goal__choice goal__choice--active">
+                  occasionally
+                </p>
               </div>
             </div>
           </div>
@@ -123,12 +125,18 @@ const Habit = ({ habitList, updateHabits }) => {
             />
           )}
           <ReactTooltip />
-          <Pomodoro />
+          <div className="pomodoro-box">
+            <Pomodoro />
+          </div>
         </div>
       )}
     </>
   );
 };
+
+/* ********
+ * helpers
+ * ********/
 
 function shiftDate(date, numDays) {
   const newDate = new Date(date);
@@ -138,10 +146,6 @@ function shiftDate(date, numDays) {
 
 function getRange(count) {
   return Array.from({ length: count }, (_, i) => i);
-}
-
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 export default Habit;

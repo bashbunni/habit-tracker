@@ -63,19 +63,12 @@
   padding-left: 1rem;
 }
 
-@mixin close {
-  align-self: flex-end;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-}
-
 @mixin modal($color) {
   @include divider($color);
   position: absolute;
   border-radius: $default-border;
-  background-color: $background;
-  max-width: $container-max;
+  background-color: $black;
+  max-width: $modal-max;
   width: 80%;
   top: 50%;
   left: 50%;
@@ -83,4 +76,5 @@
   padding: 3rem;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
