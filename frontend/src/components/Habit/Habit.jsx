@@ -99,7 +99,9 @@ const Habit = ({ habitList, updateHabits }) => {
               <div className="goal__list">
                 <p className="goal__choice">daily</p>
                 <p className="goal__choice">weekly</p>
-                <p className="goal__choice goal__choice--active">custom</p>
+                <p className="goal__choice goal__choice--active">
+                  occasionally
+                </p>
               </div>
             </div>
           </div>

@@ -92,6 +92,11 @@ rect {
   animation: load 0.5s;
 }
 
+.__react_component_tooltip {
+    font-size: 1rem !important; 
+    // important is necessary here because the component uses inline styles
+}
+
 /* *****************
  * habit animations
  * *****************/
