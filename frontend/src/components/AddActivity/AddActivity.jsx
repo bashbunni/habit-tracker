@@ -5,7 +5,7 @@ import close from "../../assets/icons/remove.svg";
 import "./AddActivity.scss";
 
 const AddActivity = ({ habit_id, unit, setAddOpen, getDates }) => {
-  const handleSubmit = (e) => {
+  const incrementCount = (e) => {
     e.preventDefault();
     let today = new Date().toISOString().slice(0, 10);
     window.backend
@@ -28,15 +28,15 @@ const AddActivity = ({ habit_id, unit, setAddOpen, getDates }) => {
   return (
     <div className="add-activity">
       <img
-        className="add-activity__close"
+        className="close"
         src={close}
         alt="close"
         onClick={() => {
           setAddOpen(false);
         }}
       />
-      <h1>Log Activity</h1>
-      <form className="form" onSubmit={handleSubmit}>
+      <h1 className="title">Log Activity</h1>
+      <form className="form" onSubmit={incrementCount}>
         <label htmlFor="count">How many {unit} did you complete?</label>
         <input
           className="form-field"

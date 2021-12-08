@@ -132,6 +132,10 @@ const Habit = ({ habitList, updateHabits }) => {
   );
 };
 
+/* ********
+ * helpers
+ * ********/
+
 function shiftDate(date, numDays) {
   const newDate = new Date(date);
   newDate.setDate(newDate.getDate() + numDays);
@@ -140,10 +144,6 @@ function shiftDate(date, numDays) {
 
 function getRange(count) {
   return Array.from({ length: count }, (_, i) => i);
-}
-
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 export default Habit;
