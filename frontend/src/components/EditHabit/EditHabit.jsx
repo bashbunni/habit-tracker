@@ -26,6 +26,7 @@ const EditHabit = ({
     window.backend.MySQLRepository.EditHabitFromJSON(JSON.stringify(tempHabit))
       .then(() => {
         updateHabits();
+        history.push(`/${tempHabit.name}`);
         setEditOpen(false);
       })
       .catch((err) => console.error(err));
