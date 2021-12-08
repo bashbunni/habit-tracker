@@ -11,7 +11,6 @@ const AddActivity = ({ habit_id, unit, setAddOpen, getDates }) => {
     window.backend
       .NewDate(today, Number(e.target.count.value), habit_id)
       .then((response) => {
-        console.log(response);
         window.backend.MySQLRepository.AddCountFromJSON(
           JSON.stringify(response)
         )
