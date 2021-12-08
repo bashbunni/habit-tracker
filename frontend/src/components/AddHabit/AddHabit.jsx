@@ -13,10 +13,13 @@ const AddHabit = ({ updateHabits, habitList }) => {
       .then((response) => {
         window.backend.MySQLRepository.AddHabitFromJSON(
           JSON.stringify(response)
-        );
+        )
+          .then(() => {
+            updateHabits();
+            history.push(`/${habit.name}`);
+          })
+          .catch((err) => console.error(err));
       });
-    updateHabits();
-    history.push(`/`);
   };
 
   return (
