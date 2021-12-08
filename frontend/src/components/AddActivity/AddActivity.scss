@@ -3,7 +3,4 @@
 
 .add-activity {
   @include modal($blue);
-  &__close {
-    @include close;
-  }
 }

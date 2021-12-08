@@ -5,28 +5,28 @@ import close from "../../assets/icons/remove.svg";
 
 const Modal = ({ closeModal, habitList }) => {
   return (
-    <div className="modal">
+    <div className="sidebar">
       <img
-        className="modal__close"
+        className="close close--nav"
         src={close}
         alt="close modal"
         onClick={closeModal}
       />
-      <ul className="modal__list">
+      <ul className="nav">
         {habitList.map((habit) => (
-          <li key={habit.id} className="modal__item" onClick={closeModal}>
-            <NavLink to={`/${habit.name}`} className="modal__link">
+          <li key={habit.id} className="nav__item" onClick={closeModal}>
+            <NavLink to={`/${habit.name}`} className="nav__link">
               {habit.name}
             </NavLink>
           </li>
         ))}
-        <li key="pomodoro" className="modal__item" onClick={closeModal}>
-          <NavLink to="/pomodoro" className="modal__link modal__link--pomodoro">
+        <li key="pomodoro" className="nav__item" onClick={closeModal}>
+          <NavLink to="/pomodoro" className="nav__link nav__link--pomodoro">
             pomodoro
           </NavLink>
         </li>
-        <li key="add" className="modal__item" onClick={closeModal}>
-          <NavLink to="/new" className="modal__link modal__link--add">
+        <li key="add" className="nav__item" onClick={closeModal}>
+          <NavLink to="/new" className="nav__link nav__link--add">
             add new
           </NavLink>
         </li>

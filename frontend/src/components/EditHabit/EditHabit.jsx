@@ -34,7 +34,7 @@ const EditHabit = ({
   return (
     <div className="edit-habit">
       <img
-        className="edit-habit__close"
+        className="close"
         src={close}
         alt="close"
         onClick={() => {

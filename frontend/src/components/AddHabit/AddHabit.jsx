@@ -11,7 +11,6 @@ const AddHabit = ({ updateHabits, habitList }) => {
     window.backend
       .NewHabit(habit.id, habit.name, habit.unit, habit.pomodoro, habit.why)
       .then((response) => {
-        console.log(typeof response);
         window.backend.MySQLRepository.AddHabitFromJSON(
           JSON.stringify(response)
         );

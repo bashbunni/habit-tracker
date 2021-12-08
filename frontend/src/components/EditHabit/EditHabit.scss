@@ -3,7 +3,6 @@
 
 .edit-habit {
   @include modal($light-green);
-  &__close {
-    @include close;
-  }
 }
+
+
