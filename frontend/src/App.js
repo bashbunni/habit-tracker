@@ -35,7 +35,7 @@ const App = () => {
             className="hamburger"
             src={hamburger}
             alt="open menu"
-            onClick={openNav}
+            onClick={navModal ? closeNav : openNav}
           />
           <Router>
             {navModal && <Modal closeModal={closeNav} habitList={habitList} />}
