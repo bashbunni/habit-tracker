@@ -31,7 +31,7 @@ const AddHabit = ({ updateHabits, habitList }) => {
           addHabit();
         }}
       >
-        <h1 className="form__title">Add Habit</h1>
+        <h1 className="form__title--add-habit">Add Habit</h1>
         <label className="form__label" htmlFor="name">
           habit name
         </label>

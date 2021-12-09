@@ -32,7 +32,7 @@ const App = () => {
       {habitList && (
         <div className="container">
           <img
-            className="hamburger"
+            className={nav ? "hamburger--hidden" : "hamburger"}
             src={hamburger}
             alt="open menu"
             onClick={nav ? closeNav : openNav}

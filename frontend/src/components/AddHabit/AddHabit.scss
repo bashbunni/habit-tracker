@@ -2,7 +2,7 @@
 @use "../../styles/partials/_variables.scss" as *;
 
 .add-habit {
-  @include modal($light-green);
-  background-color: $background;
-  border: none;
+  display: flex;
+  flex-direction: column;
+  max-width: $container-max;
 }

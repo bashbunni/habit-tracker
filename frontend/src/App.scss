@@ -45,6 +45,10 @@ p {
   width: 30px;
   height: 30px;
   cursor: pointer;
+  &--hidden {
+    visibility: hidden;
+    cursor: auto;
+  }
 }
 
 .highlight {
@@ -56,6 +60,12 @@ p {
   flex-direction: column;
   &__title {
     @include subtitle(white);
+    &--add-habit {
+      @include maintitle;
+      @include tablet {
+        align-self: center;
+      }
+    }
   }
   & label {
     margin: 0.5rem 0;
