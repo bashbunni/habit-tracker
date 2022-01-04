@@ -8,18 +8,19 @@ import (
 
 func main() {
 	/*
-		mysql := NewMySQLConnection()
-		fmt.Println(mysql.TodayExists())
-		sample := Date{"2021-12-04", 2, 1}
-		sampleJson, err := json.Marshal(sample)
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Printf("%s", sampleJson)
-		err = mysql.AddCountFromJSON(sampleJson)
-		if err != nil {
-			log.Fatal(err)
-		}
+		TODO: move to testing
+			mysql := NewMySQLConnection()
+			fmt.Println(mysql.TodayExists())
+			sample := Date{"2021-12-04", 2, 1}
+			sampleJson, err := json.Marshal(sample)
+			if err != nil {
+				log.Fatal(err)
+			}
+			fmt.Printf("%s", sampleJson)
+			err = mysql.AddCountFromJSON(sampleJson)
+			if err != nil {
+				log.Fatal(err)
+			}
 	*/
 	app := wails.CreateApp(&wails.AppConfig{
 		Width:  1024,
