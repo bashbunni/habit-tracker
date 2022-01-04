@@ -22,15 +22,17 @@ func main() {
 				log.Fatal(err)
 			}
 	*/
-	app := wails.CreateApp(&wails.AppConfig{
+	err := wails.Run(&options.App{
+		Title:  "habit_tracker",
 		Width:  1024,
 		Height: 768,
-		Title:  "habit_tracker",
+		Assets: assets,
 		Colour: "#131313",
+		Bind: []interface{}{
+			// TODO: can only bind structs
+			MySQLConnection,
+			Habit,
+			Date,
+		},
 	})
-	app.Bind(NewMySQLConnection())
-	app.Bind(NewHabit)
-	app.Bind(NewDate)
-	app.Bind(JSONToHabit)
-	app.Run()
 }

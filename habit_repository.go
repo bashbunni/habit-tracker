@@ -1,7 +1,6 @@
 package main
 
 import (
-	"database/sql"
 	"fmt"
 	"log"
 )
@@ -12,15 +11,6 @@ type HabitRepository interface {
 	AddHabit(Habit) error
 	EditHabit(Habit) Habit
 	DeleteHabit(uint) bool
-}
-
-type MySQLRepository struct {
-	DB *sql.DB
-}
-
-func NewMySQLConnection() *MySQLRepository {
-	s := MySQLRepository{DB: DBConnect()}
-	return &s
 }
 
 // GetHabits retrieves the list of Habits.

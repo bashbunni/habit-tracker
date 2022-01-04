@@ -8,12 +8,10 @@ const AddHabit = ({ updateHabits, habitList }) => {
   const history = useHistory();
 
   const addHabit = () => {
-    window.backend
+    window.go
       .NewHabit(habit.id, habit.name, habit.unit, habit.pomodoro, habit.why)
       .then((response) => {
-        window.backend.MySQLRepository.AddHabitFromJSON(
-          JSON.stringify(response)
-        )
+        window.go.MySQLRepository.AddHabitFromJSON(JSON.stringify(response))
           .then(() => {
             updateHabits();
             history.push(`/${habit.name}`);

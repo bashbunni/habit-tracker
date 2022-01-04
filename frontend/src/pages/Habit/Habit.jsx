@@ -25,7 +25,7 @@ const Habit = ({ habitList, updateHabits }) => {
   });
 
   const getDates = () => {
-    window.backend.MySQLRepository.GetAllDates(habit.id).then((response) => {
+    window.go.MySQLRepository.GetAllDates(habit.id).then((response) => {
       Array.prototype.push.apply(defaultValues, response);
       setDates(defaultValues);
     });

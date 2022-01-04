@@ -15,7 +15,7 @@ const EditHabit = ({
   const history = useHistory();
 
   const deleteHabit = () => {
-    window.backend.MySQLRepository.DeleteHabit(habit.id).catch((err) =>
+    window.go.MySQLRepository.DeleteHabit(habit.id).catch((err) =>
       console.error(err)
     );
     updateHabits();
@@ -23,7 +23,7 @@ const EditHabit = ({
   };
 
   const EditHabit = () => {
-    window.backend.MySQLRepository.EditHabitFromJSON(JSON.stringify(tempHabit))
+    window.go.MySQLRepository.EditHabitFromJSON(JSON.stringify(tempHabit))
       .then(() => {
         updateHabits();
         history.push(`/${tempHabit.name}`);
