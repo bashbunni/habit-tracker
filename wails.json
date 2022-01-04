@@ -1,0 +1,20 @@
+{
+  "name": "habit_tracker",
+  "assetdir": "./frontend/dist",
+  "frontend:build": "npm run build",
+  "frontend:install": "npm install",
+  "wailsjsdir": "./frontend",
+  "version": "0.1.0",
+  "Path": "",
+  "BuildDir": "",
+  "outputfilename": "habit_tracker",
+  "OutputType": "",
+  "Platform": "",
+  "Author": {
+    "name": "bashbunni",
+    "email": "bashbunni.io@gmail.com"
+  },
+  "debounceMS": 100,
+  "devserverurl": "http://localhost:34115",
+  "appargs": ""
+}

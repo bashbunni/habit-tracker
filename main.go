@@ -1,10 +1,16 @@
 package main
 
 import (
+	"embed"
 	_ "embed"
+	"log"
 
-	"github.com/wailsapp/wails"
+	"github.com/wailsapp/wails/v2"
+	"github.com/wailsapp/wails/v2/pkg/options"
 )
+
+//go:embed frontend/build
+var assets embed.FS
 
 func main() {
 	/*
@@ -22,17 +28,17 @@ func main() {
 				log.Fatal(err)
 			}
 	*/
+
 	err := wails.Run(&options.App{
 		Title:  "habit_tracker",
 		Width:  1024,
 		Height: 768,
 		Assets: assets,
-		Colour: "#131313",
 		Bind: []interface{}{
-			// TODO: can only bind structs
-			MySQLConnection,
-			Habit,
-			Date,
+			NewMySQLConnection(),
 		},
 	})
+	if err != nil {
+		log.Fatalf("error running Wails: %v", err)
+	}
 }
